@@ -1,0 +1,1311 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dev Gohel | PCB Design Engineer</title>
+
+    <meta name="description"
+        content="Dev Gohel - PCB Design Engineer portfolio featuring PCB design, Altium Designer, power electronics, embedded hardware, CAM and manufacturing.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #06100d;
+            --bg2: #081713;
+            --panel: rgba(11, 31, 24, 0.78);
+            --green: #37ff9b;
+            --green-dark: #0d6b47;
+            --cyan: #39d9ff;
+            --text: #e9fff5;
+            --muted: #8aa99c;
+            --border: rgba(55, 255, 155, 0.16);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(55,255,155,.08), transparent 28%),
+                radial-gradient(circle at 80% 60%, rgba(57,217,255,.05), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* PCB BACKGROUND */
+
+        .pcb-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            opacity: .42;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(55,255,155,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(55,255,155,.035) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+
+        .trace {
+            position: fixed;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(55,255,155,.18),
+                transparent
+            );
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .trace.one {
+            width: 55vw;
+            top: 28%;
+            left: -10%;
+            transform: rotate(18deg);
+        }
+
+        .trace.two {
+            width: 50vw;
+            top: 65%;
+            right: -10%;
+            transform: rotate(-15deg);
+        }
+
+        .trace.three {
+            width: 35vw;
+            top: 45%;
+            left: 40%;
+            transform: rotate(90deg);
+        }
+
+        .via {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            border: 1px solid rgba(55,255,155,.35);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(55,255,155,.15);
+            z-index: -1;
+        }
+
+        .via.v1 { top: 24%; left: 14%; }
+        .via.v2 { top: 72%; left: 80%; }
+        .via.v3 { top: 48%; left: 88%; }
+        .via.v4 { top: 82%; left: 23%; }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            background: rgba(6,16,13,.72);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .logo {
+            color: var(--green);
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .logo::before {
+            content: "●";
+            margin-right: 8px;
+            font-size: 9px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 13px;
+            transition: .25s;
+        }
+
+        nav a:hover {
+            color: var(--green);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 8% 80px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 7px 12px;
+            border: 1px solid var(--border);
+            background: rgba(55,255,155,.045);
+            color: var(--green);
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%,100% { opacity: 1; }
+            50% { opacity: .35; }
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 100px);
+            line-height: .95;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--green);
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .hero p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 19px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            font-size: 13px;
+            transition: .25s;
+            background: rgba(11,31,24,.6);
+        }
+
+        .btn.primary {
+            background: var(--green);
+            color: #04110b;
+            border-color: var(--green);
+            font-weight: 700;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            border-color: var(--green);
+            box-shadow: 0 8px 30px rgba(55,255,155,.12);
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-label {
+            color: var(--green);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 13px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 55px);
+            letter-spacing: -2px;
+            margin-bottom: 55px;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .project {
+            position: relative;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: .35s;
+            cursor: pointer;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            border-color: rgba(55,255,155,.5);
+            box-shadow: 0 20px 60px rgba(0,0,0,.35);
+        }
+
+        .project-visual {
+            height: 270px;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(55,255,155,.13), transparent 32%),
+                #092019;
+        }
+
+        /* PCB PLACEHOLDER */
+
+        .board {
+            position: absolute;
+            width: 72%;
+            height: 65%;
+            left: 14%;
+            top: 18%;
+            border: 1px solid rgba(55,255,155,.6);
+            background:
+                linear-gradient(90deg, transparent 48%, rgba(55,255,155,.2) 49%, transparent 51%),
+                linear-gradient(0deg, transparent 48%, rgba(55,255,155,.2) 49%, transparent 51%),
+                #0b2b20;
+            box-shadow:
+                0 0 30px rgba(55,255,155,.08),
+                inset 0 0 30px rgba(55,255,155,.05);
+            transition: .5s;
+        }
+
+        .project:hover .board {
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 0 0 50px rgba(55,255,155,.15);
+        }
+
+        .board::before,
+        .board::after {
+            content: "";
+            position: absolute;
+            background: rgba(55,255,155,.5);
+        }
+
+        .board::before {
+            width: 70%;
+            height: 1px;
+            left: 10%;
+            top: 35%;
+            box-shadow:
+                20px 35px 0 rgba(55,255,155,.35),
+                -5px 60px 0 rgba(55,255,155,.25);
+        }
+
+        .board::after {
+            width: 1px;
+            height: 70%;
+            left: 45%;
+            top: 15%;
+            box-shadow:
+                70px 0 0 rgba(55,255,155,.25),
+                -80px 0 0 rgba(55,255,155,.25);
+        }
+
+        .chip {
+            position: absolute;
+            width: 48px;
+            height: 35px;
+            background: #101715;
+            border: 1px solid rgba(55,255,155,.55);
+        }
+
+        .chip::before,
+        .chip::after {
+            content: "";
+            position: absolute;
+            left: -8px;
+            right: -8px;
+            height: 3px;
+            background: repeating-linear-gradient(
+                90deg,
+                rgba(55,255,155,.4) 0 5px,
+                transparent 5px 10px
+            );
+        }
+
+        .chip::before { top: 6px; }
+        .chip::after { bottom: 6px; }
+
+        .chip.c1 {
+            left: 20%;
+            top: 25%;
+        }
+
+        .chip.c2 {
+            right: 20%;
+            bottom: 20%;
+            width: 60px;
+            height: 42px;
+        }
+
+        .component {
+            position: absolute;
+            width: 18px;
+            height: 8px;
+            border: 1px solid rgba(55,255,155,.5);
+            background: #17241f;
+        }
+
+        .component.a { left: 68%; top: 24%; }
+        .component.b { left: 25%; bottom: 22%; }
+        .component.c { left: 58%; top: 60%; }
+
+        .vias {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border: 1px solid var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 7px rgba(55,255,155,.3);
+        }
+
+        .v-a { left: 10%; top: 12%; }
+        .v-b { right: 12%; top: 15%; }
+        .v-c { right: 8%; bottom: 12%; }
+        .v-d { left: 12%; bottom: 15%; }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-number {
+            color: var(--green);
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .project h3 {
+            font-size: 22px;
+            margin-bottom: 9px;
+        }
+
+        .project p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tag {
+            border: 1px solid var(--border);
+            color: #a7c8bb;
+            padding: 5px 8px;
+            font-size: 10px;
+        }
+
+        .github {
+            margin-top: 18px;
+            display: inline-block;
+            color: var(--green);
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .github:hover {
+            text-decoration: underline;
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--border);
+            border-left: 1px solid var(--border);
+        }
+
+        .skill {
+            padding: 30px;
+            min-height: 180px;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: .25s;
+        }
+
+        .skill:hover {
+            background: rgba(55,255,155,.04);
+        }
+
+        .skill-number {
+            color: var(--green);
+            font-size: 11px;
+            margin-bottom: 35px;
+        }
+
+        .skill h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .skill p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .about-text {
+            color: var(--muted);
+            font-size: 16px;
+            max-width: 600px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .about-highlight {
+            border-left: 2px solid var(--green);
+            padding-left: 25px;
+        }
+
+        .about-highlight strong {
+            display: block;
+            color: var(--text);
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .about-highlight span {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+            padding-top: 150px;
+            padding-bottom: 150px;
+        }
+
+        .contact h2 {
+            font-size: clamp(42px, 7vw, 80px);
+            letter-spacing: -4px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 25px 8%;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            color: #557269;
+            font-size: 11px;
+        }
+
+        /* MODAL */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(2,8,6,.88);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            z-index: 500;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            width: min(850px, 100%);
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #091a14;
+            border: 1px solid rgba(55,255,155,.3);
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 30px 100px rgba(0,0,0,.5);
+        }
+
+        .close {
+            position: absolute;
+            right: 22px;
+            top: 17px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--green);
+        }
+
+        .modal h2 {
+            color: var(--green);
+            margin-bottom: 10px;
+        }
+
+        .modal-subtitle {
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+
+        .modal-section {
+            margin-bottom: 25px;
+        }
+
+        .modal-section h4 {
+            color: var(--green);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .modal-section p {
+            color: #a9c0b7;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 0 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 80px 6%;
+            }
+
+            .hero {
+                padding: 110px 6% 70px;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-box {
+                padding: 28px 22px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PCB BACKGROUND -->
+    <div class="pcb-bg"></div>
+    <div class="trace one"></div>
+    <div class="trace two"></div>
+    <div class="trace three"></div>
+
+    <div class="via v1"></div>
+    <div class="via v2"></div>
+    <div class="via v3"></div>
+    <div class="via v4"></div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#" class="logo">DEV GOHEL</a>
+
+        <ul>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Expertise</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="status">
+                <span class="status-dot"></span>
+                PCB DESIGN ENGINEER
+            </div>
+
+            <h1>
+                HARDWARE
+                <span>BY DESIGN.</span>
+            </h1>
+
+            <p>
+                Electrical & Electronics Engineer focused on
+                <strong>PCB design, power electronics, embedded hardware,
+                and manufacturing-ready layouts.</strong>
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn primary">
+                    VIEW PROJECTS →
+                </a>
+
+                <a href="https://github.com/devmgohel17"
+                   target="_blank"
+                   class="btn">
+                    GITHUB ↗
+                </a>
+
+                <a href="#contact" class="btn">
+                    CONTACT
+                </a>
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <div class="section-label">01 / SELECTED WORK</div>
+
+        <h2 class="section-title">
+            PCB Projects
+        </h2>
+
+        <div class="projects">
+
+            <!-- PROJECT 1 -->
+            <article class="project"
+                onclick="openProject('charger')">
+
+                <div class="project-visual">
+
+                    <div class="board">
+                        <div class="chip c1"></div>
+                        <div class="chip c2"></div>
+
+                        <div class="component a"></div>
+                        <div class="component b"></div>
+                        <div class="component c"></div>
+
+                        <span class="vias v-a"></span>
+                        <span class="vias v-b"></span>
+                        <span class="vias v-c"></span>
+                        <span class="vias v-d"></span>
+                    </div>
+
+                </div>
+
+                <div class="project-info">
+
+                    <div class="project-number">
+                        PROJECT 01
+                    </div>
+
+                    <h3>USB-C Battery Charger</h3>
+
+                    <p>
+                        2-layer portable battery charger integrating
+                        USB-C input, Li-ion charging, power management,
+                        and boost conversion.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">2-LAYER</span>
+                        <span class="tag">ALTIUM</span>
+                        <span class="tag">POWER</span>
+                    </div>
+
+                    <a
+                        class="github"
+                        href="https://github.com/devmgohel17/USB-C-Charger"
+                        target="_blank"
+                        onclick="event.stopPropagation()">
+                        VIEW GITHUB →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 2 -->
+            <article class="project"
+                onclick="openProject('esp32')">
+
+                <div class="project-visual">
+
+                    <div class="board">
+
+                        <div class="chip c1"></div>
+                        <div class="chip c2"></div>
+
+                        <div class="component a"></div>
+                        <div class="component b"></div>
+                        <div class="component c"></div>
+
+                        <span class="vias v-a"></span>
+                        <span class="vias v-b"></span>
+                        <span class="vias v-c"></span>
+                        <span class="vias v-d"></span>
+
+                    </div>
+
+                </div>
+
+                <div class="project-info">
+
+                    <div class="project-number">
+                        PROJECT 02
+                    </div>
+
+                    <h3>ESP32-S3 USB-C Board</h3>
+
+                    <p>
+                        4-layer ESP32-S3 development board designed
+                        with USB-C, power integrity, grounding and
+                        manufacturable multilayer layout.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">4-LAYER</span>
+                        <span class="tag">ESP32-S3</span>
+                        <span class="tag">USB-C</span>
+                    </div>
+
+                    <a
+                        class="github"
+                        href="https://github.com/devmgohel17/ESP32-with-USB-C"
+                        target="_blank"
+                        onclick="event.stopPropagation()">
+                        VIEW GITHUB →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 3 -->
+            <article class="project"
+                onclick="openProject('ldo')">
+
+                <div class="project-visual">
+
+                    <div class="board">
+
+                        <div class="chip c1"></div>
+                        <div class="chip c2"></div>
+
+                        <div class="component a"></div>
+                        <div class="component b"></div>
+                        <div class="component c"></div>
+
+                        <span class="vias v-a"></span>
+                        <span class="vias v-b"></span>
+                        <span class="vias v-c"></span>
+                        <span class="vias v-d"></span>
+
+                    </div>
+
+                </div>
+
+                <div class="project-info">
+
+                    <div class="project-number">
+                        PROJECT 03
+                    </div>
+
+                    <h3>LDO Voltage Regulator</h3>
+
+                    <p>
+                        Compact LDO regulator PCB focused on stable
+                        voltage regulation, optimized power routing,
+                        grounding and manufacturable layout.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">POWER</span>
+                        <span class="tag">LDO</span>
+                        <span class="tag">ALTIUM</span>
+                    </div>
+
+                    <a
+                        class="github"
+                        href="https://github.com/devmgohel17/SimpleLDOConverter"
+                        target="_blank"
+                        onclick="event.stopPropagation()">
+                        VIEW GITHUB →
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPERTISE -->
+    <section id="skills">
+
+        <div class="section-label">02 / ENGINEERING</div>
+
+        <h2 class="section-title">
+            What I Build
+        </h2>
+
+        <div class="skills-grid">
+
+            <div class="skill">
+                <div class="skill-number">01</div>
+                <h3>PCB Design</h3>
+                <p>
+                    Schematic capture, component placement,
+                    routing, stack-up planning and layout optimization.
+                </p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-number">02</div>
+                <h3>Power Electronics</h3>
+                <p>
+                    Power distribution, regulators, converters,
+                    grounding and high-current routing.
+                </p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-number">03</div>
+                <h3>DFM & CAM</h3>
+                <p>
+                    Gerber generation, drill files, DRC,
+                    manufacturing preparation and CAM workflows.
+                </p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-number">04</div>
+                <h3>Embedded Hardware</h3>
+                <p>
+                    Microcontroller boards, USB-C interfaces,
+                    sensors, power systems and prototype bring-up.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="section-label">03 / ABOUT</div>
+
+        <h2 class="section-title">
+            Engineering hardware<br>
+            from idea to board.
+        </h2>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    I'm Dev Gohel, an Electrical & Electronics Engineer
+                    focused on PCB design and hardware development.
+                </p>
+
+                <p>
+                    My work spans schematic development, PCB layout,
+                    power distribution, grounding, design validation,
+                    manufacturing outputs and prototype workflows.
+                </p>
+
+                <p>
+                    I enjoy turning circuit concepts into practical,
+                    manufacturable hardware.
+                </p>
+
+            </div>
+
+            <div>
+
+                <div class="about-highlight">
+                    <strong>Altium Designer</strong>
+                    <span>Primary PCB Design Tool</span>
+                </div>
+
+                <br>
+
+                <div class="about-highlight">
+                    <strong>2–4 Layer</strong>
+                    <span>PCB Design Experience</span>
+                </div>
+
+                <br>
+
+                <div class="about-highlight">
+                    <strong>Design → Fabrication</strong>
+                    <span>End-to-end hardware workflow</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+
+        <div class="section-label">
+            04 / CONTACT
+        </div>
+
+        <h2>
+            Let's build<br>
+            something real.
+        </h2>
+
+        <p>
+            Interested in PCB design, electronics hardware,
+            or engineering opportunities?
+        </p>
+
+        <div class="contact-links">
+
+            <a
+                href="mailto:devmgohel@gmail.com"
+                class="btn primary">
+                EMAIL ME
+            </a>
+
+            <a
+                href="https://github.com/devmgohel17"
+                target="_blank"
+                class="btn">
+                GITHUB ↗
+            </a>
+
+            <a
+                href="https://www.linkedin.com/in/devgohel/"
+                target="_blank"
+                class="btn">
+                LINKEDIN ↗
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        <span>© 2026 DEV GOHEL</span>
+        <span>PCB DESIGN • HARDWARE • ENGINEERING</span>
+    </footer>
+
+
+    <!-- PROJECT MODAL -->
+
+    <div class="modal" id="projectModal">
+
+        <div class="modal-box">
+
+            <button class="close"
+                onclick="closeProject()">
+                ×
+            </button>
+
+            <div id="modalContent"></div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const projects = {
+
+            charger: {
+
+                title: "USB-C Portable Battery Charger",
+
+                subtitle:
+                    "2-Layer PCB · Altium Designer · Power Electronics",
+
+                overview:
+                    "Designed a complete USB-C portable battery charger PCB integrating lithium-ion battery charging, power management and step-up DC-DC conversion circuitry.",
+
+                design:
+                    "Optimized component placement, power routing, grounding and PCB layout to improve electrical reliability and manufacturability.",
+
+                manufacturing:
+                    "Generated fabrication-ready Gerber files and manufacturing outputs while following PCB design and DFM best practices.",
+
+                github:
+                    "https://github.com/devmgohel17/USB-C-Charger"
+
+            },
+
+            esp32: {
+
+                title: "ESP32-S3 USB-C Development Board",
+
+                subtitle:
+                    "4-Layer PCB · Altium Designer · Embedded Hardware",
+
+                overview:
+                    "Designed and implemented a 4-layer ESP32-S3 development board featuring USB-C connectivity and embedded hardware interfaces.",
+
+                design:
+                    "Applied multilayer PCB design, power integrity optimization, grounding techniques and careful component placement.",
+
+                manufacturing:
+                    "Generated Gerber files, drill files and BOM documentation to support fabrication, prototype validation and board bring-up.",
+
+                github:
+                    "https://github.com/devmgohel17/ESP32-with-USB-C"
+
+            },
+
+            ldo: {
+
+                title: "LDO Voltage Regulator PCB",
+
+                subtitle:
+                    "Power Electronics · Altium Designer",
+
+                overview:
+                    "Designed and implemented an LDO voltage regulator PCB focused on stable voltage regulation and reliable power distribution.",
+
+                design:
+                    "Optimized power routing, grounding and component placement to improve electrical performance and layout quality.",
+
+                manufacturing:
+                    "Validated design constraints and generated fabrication-ready manufacturing outputs following manufacturable PCB layout guidelines.",
+
+                github:
+                    "https://github.com/devmgohel17/SimpleLDOConverter"
+
+            }
+
+        };
+
+
+        function openProject(id) {
+
+            const project = projects[id];
+
+            document.getElementById("modalContent").innerHTML = `
+
+                <div class="section-label">
+                    PROJECT DETAILS
+                </div>
+
+                <h2>${project.title}</h2>
+
+                <div class="modal-subtitle">
+                    ${project.subtitle}
+                </div>
+
+                <div class="modal-section">
+
+                    <h4>Overview</h4>
+
+                    <p>
+                        ${project.overview}
+                    </p>
+
+                </div>
+
+                <div class="modal-section">
+
+                    <h4>Design Focus</h4>
+
+                    <p>
+                        ${project.design}
+                    </p>
+
+                </div>
+
+                <div class="modal-section">
+
+                    <h4>Manufacturing</h4>
+
+                    <p>
+                        ${project.manufacturing}
+                    </p>
+
+                </div>
+
+                <a
+                    href="${project.github}"
+                    target="_blank"
+                    class="btn primary">
+
+                    VIEW PROJECT ON GITHUB →
+
+                </a>
+
+            `;
+
+            document
+                .getElementById("projectModal")
+                .classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        function closeProject() {
+
+            document
+                .getElementById("projectModal")
+                .classList.remove("active");
+
+            document.body.style.overflow = "";
+
+        }
+
+
+        document
+            .getElementById("projectModal")
+            .addEventListener("click", function(e) {
+
+                if (e.target === this) {
+                    closeProject();
+                }
+
+            });
+
+
+        document.addEventListener("keydown", function(e) {
+
+            if (e.key === "Escape") {
+                closeProject();
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
