@@ -9,7 +9,7 @@
 <title>Dev Gohel | PCB Design Engineer</title>
 
 <meta name="description"
-content="Dev Gohel — PCB Design Engineer specializing in PCB layout, Altium Designer, hardware design, power electronics, DFM and manufacturing.">
+content="Dev Gohel — PCB Design Engineer specializing in PCB layout, Altium Designer, hardware development, power electronics, DFM and manufacturing-ready PCB design.">
 
 <style>
 
@@ -28,32 +28,33 @@ html {
 }
 
 body {
-    background: #050b08;
-    color: #e9f7ef;
+    background: #050b09;
+    color: #e9f8f0;
     font-family: Inter, Arial, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
 :root {
+
     --green: #42f58a;
-    --green-dark: #0b2419;
+    --green-dark: #0c3b26;
     --green-soft: rgba(66,245,138,.10);
-    --cyan: #55d9ff;
 
-    --bg: #050b08;
-    --panel: #08130f;
-    --panel-light: #0d1d16;
+    --bg: #050b09;
+    --panel: #08120f;
+    --panel-light: #0c1914;
 
-    --text: #e9f7ef;
-    --muted: #91a89d;
+    --text: #e9f8f0;
+    --muted: #879b92;
 
     --border: rgba(66,245,138,.16);
+
 }
 
 
 /* =========================================================
-   PCB BACKGROUND
+   PCB GRID BACKGROUND
 ========================================================= */
 
 body::before {
@@ -61,22 +62,26 @@ body::before {
     content: "";
 
     position: fixed;
+
     inset: 0;
 
     z-index: -3;
 
     background-image:
+
         linear-gradient(
             rgba(66,245,138,.025) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
             rgba(66,245,138,.025) 1px,
             transparent 1px
         );
 
-    background-size: 42px 42px;
+    background-size: 38px 38px;
+
 }
 
 
@@ -85,6 +90,7 @@ body::after {
     content: "";
 
     position: fixed;
+
     inset: 0;
 
     z-index: -2;
@@ -94,21 +100,22 @@ body::after {
     background:
 
         radial-gradient(
-            circle at 10% 20%,
+            circle at 15% 20%,
             rgba(66,245,138,.08),
             transparent 30%
         ),
 
         radial-gradient(
-            circle at 90% 70%,
-            rgba(85,217,255,.035),
+            circle at 85% 70%,
+            rgba(66,245,138,.05),
             transparent 30%
         );
+
 }
 
 
 /* =========================================================
-   PCB DECORATIVE TRACES
+   PCB TRACES
 ========================================================= */
 
 .trace {
@@ -117,44 +124,48 @@ body::after {
 
     height: 1px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(66,245,138,.25),
-            transparent
-        );
+    background: rgba(66,245,138,.18);
 
     pointer-events: none;
 
     z-index: -1;
+
 }
 
 .trace-1 {
 
-    width: 55vw;
-    top: 18%;
-    left: -12%;
+    width: 45vw;
 
-    transform: rotate(18deg);
+    top: 20%;
+
+    left: -8%;
+
+    transform: rotate(17deg);
+
 }
 
 .trace-2 {
 
-    width: 50vw;
-    top: 70%;
-    right: -15%;
+    width: 40vw;
 
-    transform: rotate(-17deg);
+    right: -8%;
+
+    top: 70%;
+
+    transform: rotate(-15deg);
+
 }
 
 .trace-3 {
 
-    width: 40vw;
-    top: 42%;
+    width: 30vw;
+
     left: 40%;
 
+    top: 43%;
+
     transform: rotate(90deg);
+
 }
 
 
@@ -163,35 +174,36 @@ body::after {
     position: fixed;
 
     width: 8px;
+
     height: 8px;
 
     border: 1px solid rgba(66,245,138,.45);
 
     border-radius: 50%;
 
-    box-shadow:
-        0 0 12px rgba(66,245,138,.15);
+    box-shadow: 0 0 12px rgba(66,245,138,.15);
 
     z-index: -1;
+
 }
 
 .via-1 {
-    left: 9%;
-    top: 16%;
+    left: 13%;
+    top: 25%;
 }
 
 .via-2 {
-    right: 13%;
-    top: 34%;
+    right: 15%;
+    top: 38%;
 }
 
 .via-3 {
-    left: 76%;
-    bottom: 17%;
+    left: 75%;
+    bottom: 18%;
 }
 
 .via-4 {
-    left: 18%;
+    left: 20%;
     bottom: 12%;
 }
 
@@ -208,24 +220,25 @@ nav {
     left: 0;
 
     width: 100%;
+
     height: 70px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
-    padding: 0 7%;
+    padding: 0 6%;
 
-    background:
-        rgba(5,11,8,.78);
+    background: rgba(5,11,9,.80);
 
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(18px);
 
-    border-bottom:
-        1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 
     z-index: 1000;
+
 }
 
 
@@ -240,14 +253,16 @@ nav {
     font-weight: 800;
 
     letter-spacing: 2px;
+
 }
 
 
 .logo span {
 
-    color: #70897c;
+    color: #6f847b;
 
     font-weight: 400;
+
 }
 
 
@@ -258,6 +273,7 @@ nav ul {
     display: flex;
 
     gap: 30px;
+
 }
 
 
@@ -270,12 +286,14 @@ nav ul a {
     font-size: 12px;
 
     transition: .25s;
+
 }
 
 
 nav ul a:hover {
 
     color: var(--green);
+
 }
 
 
@@ -289,15 +307,14 @@ nav ul a:hover {
 
     display: grid;
 
-    grid-template-columns:
-        1.1fr .9fr;
+    grid-template-columns: 1.05fr .95fr;
 
     align-items: center;
 
-    gap: 70px;
+    gap: 50px;
 
-    padding:
-        120px 8% 80px;
+    padding: 120px 7% 80px;
+
 }
 
 
@@ -307,44 +324,41 @@ nav ul a:hover {
 
     align-items: center;
 
-    gap: 9px;
+    gap: 8px;
 
-    padding:
-        8px 12px;
+    padding: 7px 12px;
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
-    background:
-        rgba(66,245,138,.035);
+    background: rgba(66,245,138,.035);
 
     color: var(--green);
 
     font-size: 10px;
 
-    letter-spacing: 1.8px;
+    letter-spacing: 2px;
 
     text-transform: uppercase;
 
-    margin-bottom: 25px;
+    margin-bottom: 28px;
+
 }
 
 
 .status-dot {
 
     width: 6px;
+
     height: 6px;
 
     border-radius: 50%;
 
-    background:
-        var(--green);
+    background: var(--green);
 
-    box-shadow:
-        0 0 12px var(--green);
+    box-shadow: 0 0 12px var(--green);
 
-    animation:
-        blink 2s infinite;
+    animation: blink 2s infinite;
+
 }
 
 
@@ -357,19 +371,20 @@ nav ul a:hover {
     50% {
         opacity: .3;
     }
+
 }
 
 
 .hero h1 {
 
-    font-size:
-        clamp(55px, 8vw, 105px);
+    font-size: clamp(55px, 8vw, 105px);
 
     line-height: .88;
 
     letter-spacing: -5px;
 
     margin-bottom: 30px;
+
 }
 
 
@@ -378,6 +393,7 @@ nav ul a:hover {
     display: block;
 
     color: var(--green);
+
 }
 
 
@@ -387,9 +403,10 @@ nav ul a:hover {
 
     color: var(--muted);
 
-    font-size: 17px;
+    font-size: 16px;
 
     margin-bottom: 32px;
+
 }
 
 
@@ -398,12 +415,9 @@ nav ul a:hover {
     color: var(--text);
 
     font-weight: 500;
+
 }
 
-
-/* =========================================================
-   BUTTONS
-========================================================= */
 
 .buttons {
 
@@ -412,6 +426,7 @@ nav ul a:hover {
     gap: 10px;
 
     flex-wrap: wrap;
+
 }
 
 
@@ -420,340 +435,115 @@ nav ul a:hover {
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
-    padding:
-        12px 17px;
+    padding: 12px 17px;
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
     color: var(--text);
 
     text-decoration: none;
 
-    font-size: 11px;
+    font-size: 10px;
 
-    letter-spacing: .5px;
+    letter-spacing: .7px;
 
-    background:
-        rgba(8,19,15,.75);
+    background: rgba(8,18,15,.75);
 
     transition: .25s;
+
 }
 
 
 .btn:hover {
 
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 
-    border-color:
-        var(--green);
+    border-color: var(--green);
 
-    box-shadow:
-        0 10px 30px
-        rgba(66,245,138,.08);
+    box-shadow: 0 12px 35px rgba(66,245,138,.08);
+
 }
 
 
 .btn-primary {
 
-    background:
-        var(--green);
+    background: var(--green);
 
-    color:
-        #041009;
+    color: #031009;
 
-    border-color:
-        var(--green);
+    border-color: var(--green);
 
-    font-weight: 700;
+    font-weight: 800;
+
 }
 
 
 /* =========================================================
-   HERO PCB
+   HERO IMAGE
 ========================================================= */
 
-.hero-board {
+.hero-visual {
 
-    position: relative;
+    display: flex;
 
-    width:
-        min(460px, 100%);
+    justify-content: center;
 
-    aspect-ratio:
-        1.25;
+    align-items: center;
 
-    margin: auto;
+}
 
-    border:
-        1px solid
-        rgba(66,245,138,.45);
 
-    background:
+.hero-image-frame {
 
-        linear-gradient(
-            90deg,
-            transparent 48%,
-            rgba(66,245,138,.10) 49%,
-            transparent 51%
-        ),
+    width: min(500px, 100%);
 
-        linear-gradient(
-            0deg,
-            transparent 48%,
-            rgba(66,245,138,.10) 49%,
-            transparent 51%
-        ),
+    aspect-ratio: 1 / 1;
 
-        #072117;
+    overflow: hidden;
+
+    border: 1px solid rgba(66,245,138,.25);
+
+    background: #06100c;
 
     box-shadow:
 
-        0 0 80px
-        rgba(66,245,138,.06),
+        0 0 70px rgba(66,245,138,.07),
 
-        inset 0 0 60px
-        rgba(66,245,138,.04);
+        inset 0 0 50px rgba(66,245,138,.04);
 
-    transform:
-        rotate(-3deg);
+    transform: rotate(1deg);
 
-    transition:
-        .5s;
+    transition: .5s;
+
 }
 
 
-.hero-board:hover {
+.hero-image-frame:hover {
 
-    transform:
-        rotate(0deg)
-        scale(1.025);
+    transform: rotate(0deg) scale(1.02);
+
+    border-color: rgba(66,245,138,.55);
 
     box-shadow:
 
-        0 0 100px
-        rgba(66,245,138,.12),
+        0 0 100px rgba(66,245,138,.12);
 
-        inset 0 0 60px
-        rgba(66,245,138,.06);
 }
 
 
-.hero-board::before {
+.hero-image-frame img {
 
-    content:
-        "PCB / HARDWARE";
+    width: 100%;
 
-    position: absolute;
+    height: 100%;
 
-    left: 25px;
-    top: 22px;
+    display: block;
 
-    color:
-        rgba(66,245,138,.55);
+    object-fit: cover;
 
-    font-size: 11px;
-
-    letter-spacing: 2px;
-}
-
-
-.hero-board::after {
-
-    content:
-        "DEV GOHEL";
-
-    position: absolute;
-
-    right: 22px;
-    bottom: 18px;
-
-    color:
-        rgba(66,245,138,.4);
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-}
-
-
-.board-chip {
-
-    position: absolute;
-
-    width: 100px;
-    height: 75px;
-
-    left: 34%;
-    top: 36%;
-
-    background:
-        #111a16;
-
-    border:
-        1px solid
-        rgba(66,245,138,.55);
-
-    box-shadow:
-        0 0 20px rgba(0,0,0,.4);
-}
-
-
-.board-chip::before,
-.board-chip::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: -11px;
-    right: -11px;
-
-    height: 4px;
-
-    background:
-
-        repeating-linear-gradient(
-            90deg,
-            rgba(66,245,138,.5) 0 6px,
-            transparent 6px 12px
-        );
-}
-
-
-.board-chip::before {
-    top: 10px;
-}
-
-
-.board-chip::after {
-    bottom: 10px;
-}
-
-
-.board-line {
-
-    position: absolute;
-
-    height: 1px;
-
-    background:
-        rgba(66,245,138,.55);
-}
-
-
-.line-1 {
-
-    width: 150px;
-
-    left: 7%;
-    top: 28%;
-
-    transform:
-        rotate(10deg);
-}
-
-
-.line-2 {
-
-    width: 130px;
-
-    right: 5%;
-    top: 65%;
-
-    transform:
-        rotate(-15deg);
-}
-
-
-.line-3 {
-
-    width: 100px;
-
-    left: 10%;
-    bottom: 22%;
-
-    transform:
-        rotate(-7deg);
-}
-
-
-.board-component {
-
-    position: absolute;
-
-    width: 25px;
-    height: 12px;
-
-    background:
-        #17221e;
-
-    border:
-        1px solid
-        rgba(66,245,138,.4);
-}
-
-
-.bc-1 {
-    left: 17%;
-    top: 43%;
-}
-
-.bc-2 {
-    right: 18%;
-    top: 29%;
-}
-
-.bc-3 {
-    right: 22%;
-    bottom: 22%;
-}
-
-.bc-4 {
-    left: 25%;
-    bottom: 17%;
-}
-
-
-.board-via {
-
-    position: absolute;
-
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid var(--green);
-
-    box-shadow:
-        0 0 8px
-        rgba(66,245,138,.35);
-}
-
-
-.bv-1 {
-    left: 8%;
-    top: 10%;
-}
-
-.bv-2 {
-    right: 8%;
-    top: 15%;
-}
-
-.bv-3 {
-    right: 12%;
-    bottom: 10%;
-}
-
-.bv-4 {
-    left: 10%;
-    bottom: 13%;
 }
 
 
@@ -763,15 +553,14 @@ nav ul a:hover {
 
 section {
 
-    padding:
-        110px 8%;
+    padding: 110px 7%;
+
 }
 
 
 .section-label {
 
-    color:
-        var(--green);
+    color: var(--green);
 
     font-size: 10px;
 
@@ -780,331 +569,239 @@ section {
     text-transform: uppercase;
 
     margin-bottom: 12px;
+
 }
 
 
 .section-title {
 
-    font-size:
-        clamp(34px, 5vw, 58px);
+    font-size: clamp(36px, 5vw, 62px);
 
-    letter-spacing:
-        -3px;
+    letter-spacing: -3px;
 
-    line-height:
-        1;
+    line-height: .95;
 
-    margin-bottom:
-        55px;
+    margin-bottom: 55px;
+
 }
 
 
 /* =========================================================
-   PROJECTS
+   PROJECT GRID
 ========================================================= */
 
 .projects {
 
-    display:
-        grid;
+    display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
-    gap:
-        20px;
+    gap: 20px;
+
 }
 
 
-/* =========================================================
-   PROJECT CARD
-========================================================= */
-
 .project {
 
-    background:
-        rgba(8,19,15,.80);
+    background: rgba(8,18,15,.82);
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    transition:
-        .35s;
+    transition: .35s;
+
 }
 
 
 .project:hover {
 
-    transform:
-        translateY(-8px);
+    transform: translateY(-7px);
 
-    border-color:
-        rgba(66,245,138,.45);
+    border-color: rgba(66,245,138,.45);
 
-    box-shadow:
-        0 25px 70px
-        rgba(0,0,0,.4);
+    box-shadow: 0 25px 60px rgba(0,0,0,.35);
+
 }
 
 
 /* =========================================================
-   IMAGE CAROUSEL
+   PROJECT IMAGE CAROUSEL
 ========================================================= */
 
 .project-gallery {
 
-    position:
-        relative;
+    position: relative;
 
-    height:
-        280px;
+    width: 100%;
 
-    overflow:
-        hidden;
+    height: 270px;
 
-    background:
-        #07120e;
+    overflow: hidden;
+
+    background: #06100c;
+
 }
 
 
 .slides {
 
-    width:
-        100%;
+    display: flex;
 
-    height:
-        100%;
+    width: 100%;
 
-    display:
-        flex;
+    height: 100%;
 
-    transition:
-        transform .5s
-        cubic-bezier(.4,0,.2,1);
+    transition: transform .45s ease;
+
 }
 
 
 .slide {
 
-    min-width:
-        100%;
+    min-width: 100%;
 
-    height:
-        100%;
+    height: 100%;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    padding:
-        18px;
+    background: #080d0b;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(66,245,138,.08),
-            transparent 65%
-        );
 }
 
 
 .slide img {
 
-    width:
-        100%;
+    width: 100%;
 
-    height:
-        100%;
+    height: 100%;
 
-    object-fit:
-        contain;
+    object-fit: contain;
 
-    transition:
-        .4s;
+    cursor: zoom-in;
 
-    cursor:
-        zoom-in;
+    transition: .3s;
+
 }
 
 
-.project:hover .slide img {
+.slide img:hover {
 
-    transform:
-        scale(1.025);
+    transform: scale(1.02);
+
 }
 
 
 /* =========================================================
-   CAROUSEL ARROWS
+   CAROUSEL BUTTONS
 ========================================================= */
 
 .carousel-btn {
 
-    position:
-        absolute;
+    position: absolute;
 
-    top:
-        50%;
+    top: 50%;
 
-    transform:
-        translateY(-50%);
+    transform: translateY(-50%);
 
-    width:
-        38px;
+    width: 36px;
 
-    height:
-        38px;
+    height: 36px;
 
-    display:
-        flex;
+    border-radius: 50%;
 
-    align-items:
-        center;
+    border: 1px solid rgba(66,245,138,.35);
 
-    justify-content:
-        center;
+    background: rgba(3,10,7,.75);
 
-    border:
-        1px solid
-        rgba(66,245,138,.3);
+    color: var(--green);
 
-    background:
-        rgba(3,10,7,.75);
+    font-size: 25px;
 
-    color:
-        var(--green);
+    cursor: pointer;
 
-    cursor:
-        pointer;
+    z-index: 5;
 
-    font-size:
-        20px;
+    transition: .25s;
 
-    opacity:
-        0;
-
-    transition:
-        .25s;
-
-    z-index:
-        5;
-}
-
-
-.project:hover .carousel-btn {
-
-    opacity:
-        1;
 }
 
 
 .carousel-btn:hover {
 
-    background:
-        var(--green);
+    background: var(--green);
 
-    color:
-        #041009;
+    color: #031009;
 
-    border-color:
-        var(--green);
 }
 
 
-.prev {
+.carousel-btn.prev {
 
-    left:
-        12px;
+    left: 12px;
+
 }
 
 
-.next {
+.carousel-btn.next {
 
-    right:
-        12px;
+    right: 12px;
+
 }
 
 
 /* =========================================================
-   CAROUSEL DOTS
+   DOTS
 ========================================================= */
 
 .carousel-dots {
 
-    position:
-        absolute;
+    position: absolute;
 
-    bottom:
-        12px;
+    left: 50%;
 
-    left:
-        50%;
+    bottom: 13px;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
-    display:
-        flex;
+    display: flex;
 
-    gap:
-        6px;
+    gap: 6px;
 
-    padding:
-        5px 8px;
+    z-index: 5;
 
-    background:
-        rgba(3,10,7,.75);
-
-    border:
-        1px solid
-        rgba(66,245,138,.15);
 }
 
 
 .dot {
 
-    width:
-        5px;
+    width: 6px;
 
-    height:
-        5px;
+    height: 6px;
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
-    background:
-        rgba(255,255,255,.25);
+    background: rgba(255,255,255,.35);
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
-    transition:
-        .25s;
+    transition: .25s;
+
 }
 
 
 .dot.active {
 
-    width:
-        18px;
+    width: 18px;
 
-    border-radius:
-        5px;
+    border-radius: 10px;
 
-    background:
-        var(--green);
+    background: var(--green);
 
-    box-shadow:
-        0 0 8px
-        rgba(66,245,138,.4);
 }
 
 
@@ -1114,223 +811,113 @@ section {
 
 .project-content {
 
-    padding:
-        25px;
+    padding: 25px;
+
 }
 
 
 .project-number {
 
-    color:
-        var(--green);
+    color: var(--green);
 
-    font-size:
-        9px;
+    font-size: 9px;
 
-    letter-spacing:
-        2px;
+    letter-spacing: 2px;
 
-    margin-bottom:
-        12px;
+    margin-bottom: 12px;
+
 }
 
 
 .project h3 {
 
-    font-size:
-        21px;
+    font-size: 20px;
 
-    line-height:
-        1.2;
+    line-height: 1.2;
 
-    margin-bottom:
-        10px;
+    margin-bottom: 10px;
+
 }
 
 
 .project-description {
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
-    font-size:
-        13px;
+    font-size: 12px;
 
-    margin-bottom:
-        18px;
+    margin-bottom: 18px;
+
 }
 
 
 .tags {
 
-    display:
-        flex;
+    display: flex;
 
-    flex-wrap:
-        wrap;
+    flex-wrap: wrap;
 
-    gap:
-        6px;
+    gap: 6px;
+
 }
 
 
 .tag {
 
-    border:
-        1px solid
-        var(--border);
+    border: 1px solid var(--border);
 
-    color:
-        #a9c3b7;
+    color: #a8bbb3;
 
-    padding:
-        4px 7px;
+    padding: 4px 7px;
 
-    font-size:
-        9px;
+    font-size: 8px;
 
-    letter-spacing:
-        .5px;
+    letter-spacing: .5px;
+
 }
 
 
 .project-footer {
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    gap:
-        10px;
+    margin-top: 20px;
 
-    margin-top:
-        20px;
 }
 
 
 .project-link {
 
-    color:
-        var(--green);
+    color: var(--green);
 
-    text-decoration:
-        none;
+    text-decoration: none;
 
-    font-size:
-        11px;
+    font-size: 10px;
+
+    letter-spacing: .5px;
+
 }
 
 
 .project-link:hover {
 
-    text-decoration:
-        underline;
+    text-decoration: underline;
+
 }
 
 
 .image-count {
 
-    color:
-        #647a70;
+    color: #637970;
 
-    font-size:
-        9px;
+    font-size: 9px;
 
-    letter-spacing:
-        1px;
-}
+    letter-spacing: 1px;
 
-
-/* =========================================================
-   IMAGE MODAL
-========================================================= */
-
-.image-modal {
-
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    background:
-        rgba(0,0,0,.92);
-
-    display:
-        none;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        30px;
-
-    z-index:
-        5000;
-
-    cursor:
-        zoom-out;
-}
-
-
-.image-modal.active {
-
-    display:
-        flex;
-}
-
-
-.image-modal img {
-
-    max-width:
-        92vw;
-
-    max-height:
-        90vh;
-
-    object-fit:
-        contain;
-
-    border:
-        1px solid
-        rgba(66,245,138,.35);
-
-    box-shadow:
-        0 0 80px
-        rgba(66,245,138,.08);
-}
-
-
-.modal-close {
-
-    position:
-        fixed;
-
-    top:
-        25px;
-
-    right:
-        30px;
-
-    color:
-        var(--green);
-
-    font-size:
-        30px;
-
-    cursor:
-        pointer;
-
-    z-index:
-        5001;
 }
 
 
@@ -1340,76 +927,65 @@ section {
 
 .process {
 
-    display:
-        grid;
+    display: grid;
 
-    grid-template-columns:
-        repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 
-    border-top:
-        1px solid var(--border);
+    border-top: 1px solid var(--border);
 
-    border-left:
-        1px solid var(--border);
+    border-left: 1px solid var(--border);
+
 }
 
 
 .process-item {
 
-    min-height:
-        190px;
+    min-height: 190px;
 
-    padding:
-        25px;
+    padding: 25px;
 
-    border-right:
-        1px solid var(--border);
+    border-right: 1px solid var(--border);
 
-    border-bottom:
-        1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 
-    transition:
-        .25s;
+    transition: .25s;
+
 }
 
 
 .process-item:hover {
 
-    background:
-        rgba(66,245,138,.035);
+    background: rgba(66,245,138,.035);
+
 }
 
 
 .process-number {
 
-    color:
-        var(--green);
+    color: var(--green);
 
-    font-size:
-        10px;
+    font-size: 10px;
 
-    margin-bottom:
-        35px;
+    margin-bottom: 35px;
+
 }
 
 
 .process-item h3 {
 
-    font-size:
-        16px;
+    font-size: 16px;
 
-    margin-bottom:
-        10px;
+    margin-bottom: 10px;
+
 }
 
 
 .process-item p {
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
-    font-size:
-        12px;
+    font-size: 12px;
+
 }
 
 
@@ -1419,63 +995,54 @@ section {
 
 .skills {
 
-    display:
-        grid;
+    display: grid;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
-    border-top:
-        1px solid var(--border);
+    border-top: 1px solid var(--border);
 
-    border-left:
-        1px solid var(--border);
+    border-left: 1px solid var(--border);
+
 }
 
 
 .skill {
 
-    min-height:
-        175px;
+    min-height: 175px;
 
-    padding:
-        25px;
+    padding: 25px;
 
-    border-right:
-        1px solid var(--border);
+    border-right: 1px solid var(--border);
 
-    border-bottom:
-        1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 
-    transition:
-        .25s;
+    transition: .25s;
+
 }
 
 
 .skill:hover {
 
-    background:
-        rgba(66,245,138,.035);
+    background: rgba(66,245,138,.035);
+
 }
 
 
 .skill h3 {
 
-    font-size:
-        16px;
+    font-size: 16px;
 
-    margin-bottom:
-        13px;
+    margin-bottom: 13px;
+
 }
 
 
 .skill p {
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
-    font-size:
-        12px;
+    font-size: 12px;
+
 }
 
 
@@ -1485,80 +1052,70 @@ section {
 
 .about-grid {
 
-    display:
-        grid;
+    display: grid;
 
-    grid-template-columns:
-        1.2fr .8fr;
+    grid-template-columns: 1.2fr .8fr;
 
-    gap:
-        90px;
+    gap: 90px;
+
 }
 
 
 .about-text {
 
-    max-width:
-        650px;
+    max-width: 650px;
+
 }
 
 
 .about-text p {
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
-    margin-bottom:
-        20px;
+    margin-bottom: 20px;
 
-    font-size:
-        15px;
+    font-size: 15px;
+
 }
 
 
 .stats {
 
-    display:
-        flex;
+    display: flex;
 
-    flex-direction:
-        column;
+    flex-direction: column;
 
-    gap:
-        15px;
+    gap: 15px;
+
 }
 
 
 .stat {
 
-    padding:
-        20px;
+    padding: 20px;
 
-    border-left:
-        2px solid var(--green);
+    border-left: 2px solid var(--green);
 
-    background:
-        rgba(66,245,138,.025);
+    background: rgba(66,245,138,.025);
+
 }
 
 
 .stat strong {
 
-    display:
-        block;
+    display: block;
 
-    font-size:
-        22px;
+    font-size: 21px;
+
 }
 
 
 .stat span {
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
-    font-size:
-        11px;
+    font-size: 11px;
+
 }
 
 
@@ -1568,56 +1125,47 @@ section {
 
 .contact {
 
-    text-align:
-        center;
+    text-align: center;
 
-    padding-top:
-        160px;
+    padding-top: 160px;
 
-    padding-bottom:
-        160px;
+    padding-bottom: 160px;
+
 }
 
 
 .contact h2 {
 
-    font-size:
-        clamp(45px, 7vw, 85px);
+    font-size: clamp(45px, 7vw, 85px);
 
-    letter-spacing:
-        -4px;
+    letter-spacing: -4px;
 
-    line-height:
-        .95;
+    line-height: .95;
 
-    margin-bottom:
-        25px;
+    margin-bottom: 25px;
+
 }
 
 
 .contact p {
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
-    margin-bottom:
-        30px;
+    margin-bottom: 30px;
+
 }
 
 
 .contact-buttons {
 
-    display:
-        flex;
+    display: flex;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    gap:
-        10px;
+    gap: 10px;
 
-    flex-wrap:
-        wrap;
+    flex-wrap: wrap;
+
 }
 
 
@@ -1627,26 +1175,93 @@ section {
 
 footer {
 
-    border-top:
-        1px solid var(--border);
+    border-top: 1px solid var(--border);
 
-    padding:
-        25px 8%;
+    padding: 25px 7%;
 
-    display:
-        flex;
+    display: flex;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    color:
-        #60786e;
+    color: #60756d;
 
-    font-size:
-        10px;
+    font-size: 10px;
 
-    letter-spacing:
-        .5px;
+    letter-spacing: .5px;
+
+}
+
+
+/* =========================================================
+   IMAGE MODAL
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.92);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+    z-index: 3000;
+
+}
+
+
+.modal.active {
+
+    display: flex;
+
+}
+
+
+#modalImage {
+
+    max-width: 92vw;
+
+    max-height: 88vh;
+
+    object-fit: contain;
+
+    border: 1px solid rgba(66,245,138,.3);
+
+    box-shadow: 0 0 80px rgba(66,245,138,.08);
+
+}
+
+
+.modal-close {
+
+    position: fixed;
+
+    top: 25px;
+
+    right: 35px;
+
+    color: white;
+
+    font-size: 38px;
+
+    cursor: pointer;
+
+    z-index: 3001;
+
+}
+
+
+.modal-close:hover {
+
+    color: var(--green);
+
 }
 
 
@@ -1654,127 +1269,114 @@ footer {
    MOBILE
 ========================================================= */
 
-@media(max-width:1000px) {
+@media(max-width: 1000px) {
 
     .hero {
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
+
     }
 
+    .hero-visual {
 
-    .hero-board {
+        margin-top: 20px;
 
-        width:
-            min(500px,90%);
     }
 
+    .hero-image-frame {
+
+        width: min(520px, 90vw);
+
+    }
 
     .projects {
 
-        grid-template-columns:
-            1fr;
-    }
+        grid-template-columns: 1fr;
 
+    }
 
     .process {
 
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+        grid-template-columns: repeat(2, 1fr);
 
+    }
 
     .skills {
 
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+        grid-template-columns: repeat(2, 1fr);
 
+    }
 
     .about-grid {
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
 
-        gap:
-            45px;
+        gap: 45px;
+
     }
+
 }
 
 
-@media(max-width:650px) {
+@media(max-width: 650px) {
 
     nav {
 
-        padding:
-            0 5%;
-    }
+        padding: 0 5%;
 
+    }
 
     nav ul {
 
-        display:
-            none;
-    }
+        display: none;
 
+    }
 
     section {
 
-        padding:
-            80px 6%;
-    }
+        padding: 80px 6%;
 
+    }
 
     .hero {
 
-        padding:
-            110px 6% 70px;
-    }
+        padding: 110px 6% 70px;
 
+    }
 
     .hero h1 {
 
-        letter-spacing:
-            -3px;
-    }
+        font-size: clamp(48px, 14vw, 75px);
 
+        letter-spacing: -3px;
+
+    }
 
     .hero-description {
 
-        font-size:
-            15px;
+        font-size: 14px;
+
     }
 
+    .project-gallery {
+
+        height: 240px;
+
+    }
 
     .process,
     .skills {
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
+
     }
-
-
-    .project-gallery {
-
-        height:
-            240px;
-    }
-
-
-    .carousel-btn {
-
-        opacity:
-            1;
-    }
-
 
     footer {
 
-        flex-direction:
-            column;
+        flex-direction: column;
 
-        gap:
-            8px;
+        gap: 8px;
+
     }
 
 }
@@ -1787,9 +1389,9 @@ footer {
 <body>
 
 
-<!-- ======================================================
+<!-- =========================================================
      PCB DECORATION
-======================================================= -->
+========================================================= -->
 
 <div class="trace trace-1"></div>
 <div class="trace trace-2"></div>
@@ -1801,9 +1403,9 @@ footer {
 <div class="via via-4"></div>
 
 
-<!-- ======================================================
+<!-- =========================================================
      NAVIGATION
-======================================================= -->
+========================================================= -->
 
 <nav>
 
@@ -1838,11 +1440,12 @@ footer {
 </nav>
 
 
-<!-- ======================================================
+<!-- =========================================================
      HERO
-======================================================= -->
+========================================================= -->
 
 <header class="hero">
+
 
     <div>
 
@@ -1918,36 +1521,31 @@ footer {
     </div>
 
 
-    <!-- HERO PCB -->
+    <!-- =====================================================
+         NEW 1:1 HERO IMAGE
+    ====================================================== -->
 
-    <div class="hero-board">
+    <div class="hero-visual">
 
-        <div class="board-chip"></div>
+        <div class="hero-image-frame">
 
-        <div class="board-line line-1"></div>
-        <div class="board-line line-2"></div>
-        <div class="board-line line-3"></div>
+            <img
+                src="images/hero-hardware.png"
+                alt="PCB hardware design">
 
-        <div class="board-component bc-1"></div>
-        <div class="board-component bc-2"></div>
-        <div class="board-component bc-3"></div>
-        <div class="board-component bc-4"></div>
-
-        <div class="board-via bv-1"></div>
-        <div class="board-via bv-2"></div>
-        <div class="board-via bv-3"></div>
-        <div class="board-via bv-4"></div>
+        </div>
 
     </div>
 
 </header>
 
 
-<!-- ======================================================
+<!-- =========================================================
      PROJECTS
-======================================================= -->
+========================================================= -->
 
 <section id="projects">
+
 
     <div class="section-label">
         01 / SELECTED WORK
@@ -1955,8 +1553,10 @@ footer {
 
 
     <h2 class="section-title">
+
         Designed from<br>
         every layer.
+
     </h2>
 
 
@@ -1970,10 +1570,7 @@ footer {
         <article class="project">
 
 
-            <div
-                class="project-gallery"
-                data-carousel>
-
+            <div class="project-gallery">
 
                 <div class="slides">
 
@@ -1982,7 +1579,7 @@ footer {
 
                         <img
                             src="images/ESP32.png"
-                            alt="ESP32-S3 USB-C PCB"
+                            alt="ESP32 PCB"
                             onclick="openModal(this.src)">
 
                     </div>
@@ -1992,7 +1589,7 @@ footer {
 
                         <img
                             src="images/ESP32 3D MODEL.png"
-                            alt="ESP32-S3 3D model"
+                            alt="ESP32 3D Model"
                             onclick="openModal(this.src)">
 
                     </div>
@@ -2002,7 +1599,7 @@ footer {
 
                         <img
                             src="images/ESP32 SCHEMATIC.png"
-                            alt="ESP32-S3 schematic"
+                            alt="ESP32 Schematic"
                             onclick="openModal(this.src)">
 
                     </div>
@@ -2012,7 +1609,7 @@ footer {
 
                         <img
                             src="images/2D.png"
-                            alt="ESP32-S3 2D PCB layout"
+                            alt="ESP32 2D Layout"
                             onclick="openModal(this.src)">
 
                     </div>
@@ -2022,10 +1619,11 @@ footer {
 
                         <img
                             src="images/3D Model.png"
-                            alt="ESP32-S3 PCB 3D model"
+                            alt="ESP32 PCB 3D Model"
                             onclick="openModal(this.src)">
 
                     </div>
+
 
                 </div>
 
@@ -2082,6 +1680,7 @@ footer {
 
             <div class="project-content">
 
+
                 <div class="project-number">
                     PROJECT 01 / 03
                 </div>
@@ -2104,25 +1703,11 @@ footer {
 
                 <div class="tags">
 
-                    <span class="tag">
-                        4-LAYER
-                    </span>
-
-                    <span class="tag">
-                        ESP32-S3
-                    </span>
-
-                    <span class="tag">
-                        USB-C
-                    </span>
-
-                    <span class="tag">
-                        ALTIUM
-                    </span>
-
-                    <span class="tag">
-                        POWER
-                    </span>
+                    <span class="tag">4-LAYER</span>
+                    <span class="tag">ESP32-S3</span>
+                    <span class="tag">USB-C</span>
+                    <span class="tag">ALTIUM</span>
+                    <span class="tag">POWER</span>
 
                 </div>
 
@@ -2145,6 +1730,7 @@ footer {
 
                 </div>
 
+
             </div>
 
         </article>
@@ -2158,10 +1744,7 @@ footer {
         <article class="project">
 
 
-            <div
-                class="project-gallery"
-                data-carousel>
-
+            <div class="project-gallery">
 
                 <div class="slides">
 
@@ -2170,7 +1753,7 @@ footer {
 
                         <img
                             src="images/2D USB.png"
-                            alt="USB-C charger 2D PCB"
+                            alt="USB-C Charger 2D PCB"
                             onclick="openModal(this.src)">
 
                     </div>
@@ -2180,7 +1763,7 @@ footer {
 
                         <img
                             src="images/3D Model USB.png"
-                            alt="USB-C charger 3D PCB"
+                            alt="USB-C Charger 3D PCB"
                             onclick="openModal(this.src)">
 
                     </div>
@@ -2190,7 +1773,7 @@ footer {
 
                         <img
                             src="images/Charger Controller.png"
-                            alt="USB-C charger controller schematic"
+                            alt="Charger Controller"
                             onclick="openModal(this.src)">
 
                     </div>
@@ -2200,10 +1783,11 @@ footer {
 
                         <img
                             src="images/Step-Up DC-DC Converter.png"
-                            alt="Step-up DC-DC converter"
+                            alt="Step-Up DC-DC Converter"
                             onclick="openModal(this.src)">
 
                     </div>
+
 
                 </div>
 
@@ -2255,6 +1839,7 @@ footer {
 
             <div class="project-content">
 
+
                 <div class="project-number">
                     PROJECT 02 / 03
                 </div>
@@ -2277,25 +1862,11 @@ footer {
 
                 <div class="tags">
 
-                    <span class="tag">
-                        2-LAYER
-                    </span>
-
-                    <span class="tag">
-                        USB-C
-                    </span>
-
-                    <span class="tag">
-                        POWER
-                    </span>
-
-                    <span class="tag">
-                        DC-DC
-                    </span>
-
-                    <span class="tag">
-                        ALTIUM
-                    </span>
+                    <span class="tag">2-LAYER</span>
+                    <span class="tag">USB-C</span>
+                    <span class="tag">POWER</span>
+                    <span class="tag">DC-DC</span>
+                    <span class="tag">ALTIUM</span>
 
                 </div>
 
@@ -2318,6 +1889,7 @@ footer {
 
                 </div>
 
+
             </div>
 
         </article>
@@ -2331,10 +1903,7 @@ footer {
         <article class="project">
 
 
-            <div
-                class="project-gallery"
-                data-carousel>
-
+            <div class="project-gallery">
 
                 <div class="slides">
 
@@ -2343,7 +1912,7 @@ footer {
 
                         <img
                             src="images/LDO.jpg"
-                            alt="LDO voltage regulator PCB"
+                            alt="LDO PCB"
                             onclick="openModal(this.src)">
 
                     </div>
@@ -2353,10 +1922,11 @@ footer {
 
                         <img
                             src="images/3D LDO.jpg"
-                            alt="LDO voltage regulator 3D model"
+                            alt="LDO 3D Model"
                             onclick="openModal(this.src)">
 
                     </div>
+
 
                 </div>
 
@@ -2398,6 +1968,7 @@ footer {
 
             <div class="project-content">
 
+
                 <div class="project-number">
                     PROJECT 03 / 03
                 </div>
@@ -2420,21 +1991,10 @@ footer {
 
                 <div class="tags">
 
-                    <span class="tag">
-                        LDO
-                    </span>
-
-                    <span class="tag">
-                        POWER
-                    </span>
-
-                    <span class="tag">
-                        ALTIUM
-                    </span>
-
-                    <span class="tag">
-                        DFM
-                    </span>
+                    <span class="tag">LDO</span>
+                    <span class="tag">POWER</span>
+                    <span class="tag">ALTIUM</span>
+                    <span class="tag">DFM</span>
 
                 </div>
 
@@ -2457,6 +2017,7 @@ footer {
 
                 </div>
 
+
             </div>
 
         </article>
@@ -2467,11 +2028,12 @@ footer {
 </section>
 
 
-<!-- ======================================================
+<!-- =========================================================
      PROCESS
-======================================================= -->
+========================================================= -->
 
 <section id="process">
+
 
     <div class="section-label">
         02 / WORKFLOW
@@ -2578,16 +2140,18 @@ footer {
 
         </div>
 
+
     </div>
 
 </section>
 
 
-<!-- ======================================================
+<!-- =========================================================
      SKILLS
-======================================================= -->
+========================================================= -->
 
 <section id="skills">
+
 
     <div class="section-label">
         03 / ENGINEERING TOOLKIT
@@ -2665,16 +2229,18 @@ footer {
 
         </div>
 
+
     </div>
 
 </section>
 
 
-<!-- ======================================================
+<!-- =========================================================
      ABOUT
-======================================================= -->
+========================================================= -->
 
 <section id="about">
+
 
     <div class="section-label">
         04 / ABOUT
@@ -2693,6 +2259,7 @@ footer {
 
 
         <div class="about-text">
+
 
             <p>
                 I'm Dev Gohel, an Electrical & Electronics
@@ -2715,6 +2282,7 @@ footer {
                 concept and turning it into practical,
                 manufacturable hardware.
             </p>
+
 
         </div>
 
@@ -2760,6 +2328,7 @@ footer {
 
             </div>
 
+
         </div>
 
     </div>
@@ -2767,13 +2336,11 @@ footer {
 </section>
 
 
-<!-- ======================================================
+<!-- =========================================================
      CONTACT
-======================================================= -->
+========================================================= -->
 
-<section
-    id="contact"
-    class="contact">
+<section id="contact" class="contact">
 
 
     <div class="section-label">
@@ -2798,7 +2365,7 @@ footer {
     <div class="contact-buttons">
 
 
-        <!-- CHANGE EMAIL -->
+        <!-- REPLACE WITH YOUR EMAIL -->
 
         <a
             href="mailto:YOUR_EMAIL@example.com"
@@ -2828,20 +2395,22 @@ footer {
 
         </a>
 
+
     </div>
 
 </section>
 
 
-<!-- ======================================================
+<!-- =========================================================
      FOOTER
-======================================================= -->
+========================================================= -->
 
 <footer>
 
     <span>
         © 2026 DEV GOHEL
     </span>
+
 
     <span>
         PCB DESIGN • HARDWARE • ENGINEERING
@@ -2850,12 +2419,12 @@ footer {
 </footer>
 
 
-<!-- ======================================================
+<!-- =========================================================
      IMAGE MODAL
-======================================================= -->
+========================================================= -->
 
 <div
-    class="image-modal"
+    class="modal"
     id="imageModal"
     onclick="closeModal()">
 
@@ -2872,14 +2441,15 @@ footer {
     <img
         id="modalImage"
         src=""
-        alt="PCB project image">
+        alt="PCB project image"
+        onclick="event.stopPropagation()">
 
 </div>
 
 
-<!-- ======================================================
+<!-- =========================================================
      JAVASCRIPT
-======================================================= -->
+========================================================= -->
 
 <script>
 
@@ -2896,18 +2466,16 @@ function moveSlide(button, direction) {
     const slides =
         gallery.querySelector(".slides");
 
+    const slideItems =
+        gallery.querySelectorAll(".slide");
+
     const dots =
         gallery.querySelectorAll(".dot");
-
-    const total =
-        dots.length;
-
 
     let current =
         parseInt(
             gallery.dataset.current || "0"
         );
-
 
     current += direction;
 
@@ -2915,38 +2483,39 @@ function moveSlide(button, direction) {
     if (current < 0) {
 
         current =
-            total - 1;
+            slideItems.length - 1;
+
     }
 
 
-    if (current >= total) {
+    if (current >= slideItems.length) {
 
-        current =
-            0;
+        current = 0;
+
     }
+
+
+    gallery.dataset.current = current;
 
 
     slides.style.transform =
         `translateX(-${current * 100}%)`;
 
 
-    dots.forEach(
-        dot =>
-            dot.classList.remove("active")
-    );
+    dots.forEach((dot, index) => {
 
+        dot.classList.toggle(
+            "active",
+            index === current
+        );
 
-    dots[current]
-        .classList.add("active");
+    });
 
-
-    gallery.dataset.current =
-        current;
 }
 
 
 /* =========================================================
-   GO TO SPECIFIC IMAGE
+   GO TO SPECIFIC SLIDE
 ========================================================= */
 
 function goToSlide(dot, index) {
@@ -2961,108 +2530,44 @@ function goToSlide(dot, index) {
         gallery.querySelectorAll(".dot");
 
 
+    gallery.dataset.current = index;
+
+
     slides.style.transform =
         `translateX(-${index * 100}%)`;
 
 
-    dots.forEach(
-        d =>
-            d.classList.remove("active")
-    );
+    dots.forEach((item, i) => {
 
-
-    dots[index]
-        .classList.add("active");
-
-
-    gallery.dataset.current =
-        index;
-}
-
-
-/* =========================================================
-   AUTO SLIDE
-========================================================= */
-
-document
-    .querySelectorAll(".project-gallery")
-    .forEach(gallery => {
-
-
-        gallery.dataset.current = "0";
-
-
-        let timer =
-            setInterval(() => {
-
-
-                const next =
-                    gallery.querySelector(".next");
-
-
-                if (next) {
-
-                    moveSlide(next, 1);
-
-                }
-
-            }, 5000);
-
-
-        gallery.addEventListener(
-            "mouseenter",
-            () => {
-
-                clearInterval(timer);
-
-            }
-        );
-
-
-        gallery.addEventListener(
-            "mouseleave",
-            () => {
-
-                timer =
-                    setInterval(() => {
-
-                        const next =
-                            gallery.querySelector(".next");
-
-                        if (next) {
-
-                            moveSlide(next, 1);
-
-                        }
-
-                    }, 5000);
-
-            }
+        item.classList.toggle(
+            "active",
+            i === index
         );
 
     });
+
+}
 
 
 /* =========================================================
    IMAGE MODAL
 ========================================================= */
 
-function openModal(src) {
+function openModal(imageSource) {
 
     const modal =
         document.getElementById("imageModal");
 
-    const image =
+    const modalImage =
         document.getElementById("modalImage");
 
 
-    image.src =
-        src;
+    modalImage.src = imageSource;
 
     modal.classList.add("active");
 
-    document.body.style.overflow =
-        "hidden";
+    document.body.style.overflow = "hidden";
+
 }
 
 
@@ -3074,22 +2579,20 @@ function closeModal() {
 
     modal.classList.remove("active");
 
-    document.body.style.overflow =
-        "";
+    document.body.style.overflow = "";
+
 }
 
 
 /* =========================================================
-   ESCAPE KEY
+   ESC KEY CLOSE MODAL
 ========================================================= */
 
 document.addEventListener(
     "keydown",
-    event => {
+    function(event) {
 
-        if (
-            event.key === "Escape"
-        ) {
+        if (event.key === "Escape") {
 
             closeModal();
 
@@ -3097,6 +2600,61 @@ document.addEventListener(
 
     }
 );
+
+
+/* =========================================================
+   AUTO SLIDE
+========================================================= */
+
+document.querySelectorAll(
+    ".project-gallery"
+).forEach(function(gallery) {
+
+
+    let autoSlide =
+        setInterval(function() {
+
+            const nextButton =
+                gallery.querySelector(
+                    ".carousel-btn.next"
+                );
+
+            moveSlide(nextButton, 1);
+
+        }, 5000);
+
+
+    gallery.addEventListener(
+        "mouseenter",
+        function() {
+
+            clearInterval(autoSlide);
+
+        }
+    );
+
+
+    gallery.addEventListener(
+        "mouseleave",
+        function() {
+
+            autoSlide =
+                setInterval(function() {
+
+                    const nextButton =
+                        gallery.querySelector(
+                            ".carousel-btn.next"
+                        );
+
+                    moveSlide(nextButton, 1);
+
+                }, 5000);
+
+        }
+    );
+
+});
+
 
 </script>
 
