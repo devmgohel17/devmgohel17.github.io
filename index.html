@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -27,35 +28,38 @@ html {
 }
 
 body {
-    background: #070b0a;
-    color: #edf8f2;
-    font-family: Inter, Arial, Helvetica, sans-serif;
+    background: #050b08;
+    color: #e9f7ef;
+    font-family: Inter, Arial, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
 :root {
-    --green: #45f58d;
-    --green-dark: #0c2419;
-    --cyan: #50dfff;
+    --green: #42f58a;
+    --green-dark: #0b2419;
+    --green-soft: rgba(66,245,138,.10);
+    --cyan: #55d9ff;
 
-    --bg: #070b0a;
-    --panel: #0b1210;
-    --panel-light: #101a16;
+    --bg: #050b08;
+    --panel: #08130f;
+    --panel-light: #0d1d16;
 
-    --text: #edf8f2;
-    --muted: #879b91;
+    --text: #e9f7ef;
+    --muted: #91a89d;
 
-    --border: rgba(69, 245, 141, 0.16);
+    --border: rgba(66,245,138,.16);
 }
 
 
 /* =========================================================
-   BACKGROUND
+   PCB BACKGROUND
 ========================================================= */
 
 body::before {
+
     content: "";
+
     position: fixed;
     inset: 0;
 
@@ -63,45 +67,52 @@ body::before {
 
     background-image:
         linear-gradient(
-            rgba(69,245,141,.025) 1px,
+            rgba(66,245,138,.025) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(69,245,141,.025) 1px,
+            rgba(66,245,138,.025) 1px,
             transparent 1px
         );
 
     background-size: 42px 42px;
 }
 
+
 body::after {
+
     content: "";
+
     position: fixed;
     inset: 0;
 
     z-index: -2;
+
     pointer-events: none;
 
     background:
+
         radial-gradient(
             circle at 10% 20%,
-            rgba(69,245,141,.08),
-            transparent 28%
+            rgba(66,245,138,.08),
+            transparent 30%
         ),
+
         radial-gradient(
-            circle at 90% 75%,
-            rgba(80,223,255,.045),
+            circle at 90% 70%,
+            rgba(85,217,255,.035),
             transparent 30%
         );
 }
 
 
 /* =========================================================
-   PCB TRACE DECORATION
+   PCB DECORATIVE TRACES
 ========================================================= */
 
 .trace {
+
     position: fixed;
 
     height: 1px;
@@ -110,7 +121,7 @@ body::after {
         linear-gradient(
             90deg,
             transparent,
-            rgba(69,245,141,.22),
+            rgba(66,245,138,.25),
             transparent
         );
 
@@ -120,59 +131,67 @@ body::after {
 }
 
 .trace-1 {
+
     width: 55vw;
-    top: 24%;
-    left: -15%;
+    top: 18%;
+    left: -12%;
+
     transform: rotate(18deg);
 }
 
 .trace-2 {
-    width: 45vw;
-    top: 68%;
-    right: -12%;
-    transform: rotate(-18deg);
+
+    width: 50vw;
+    top: 70%;
+    right: -15%;
+
+    transform: rotate(-17deg);
 }
 
 .trace-3 {
-    width: 35vw;
-    top: 45%;
-    left: 42%;
+
+    width: 40vw;
+    top: 42%;
+    left: 40%;
+
     transform: rotate(90deg);
 }
 
+
 .via {
+
     position: fixed;
 
     width: 8px;
     height: 8px;
 
+    border: 1px solid rgba(66,245,138,.45);
+
     border-radius: 50%;
 
-    border: 1px solid rgba(69,245,141,.5);
-
     box-shadow:
-        0 0 12px rgba(69,245,141,.15);
+        0 0 12px rgba(66,245,138,.15);
 
     z-index: -1;
 }
 
 .via-1 {
-    left: 13%;
-    top: 25%;
+    left: 9%;
+    top: 16%;
 }
 
 .via-2 {
-    right: 15%;
-    top: 38%;
+    right: 13%;
+    top: 34%;
 }
 
 .via-3 {
-    left: 75%;
-    bottom: 18%;
+    left: 76%;
+    bottom: 17%;
 }
 
 .via-4 {
-    left: 20%;
+    left: 18%;
     bottom: 12%;
 }
 
@@ -182,6 +201,7 @@ body::after {
 ========================================================= */
 
 nav {
+
     position: fixed;
 
     top: 0;
@@ -191,37 +211,48 @@ nav {
     height: 70px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
     padding: 0 7%;
 
-    background: rgba(7,11,10,.78);
+    background:
+        rgba(5,11,8,.78);
 
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(16px);
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:
+        1px solid var(--border);
 
     z-index: 1000;
 }
 
+
 .logo {
+
     color: var(--green);
 
     text-decoration: none;
 
     font-size: 14px;
+
     font-weight: 800;
 
     letter-spacing: 2px;
 }
 
+
 .logo span {
-    color: #6e8178;
+
+    color: #70897c;
+
     font-weight: 400;
 }
 
+
 nav ul {
+
     list-style: none;
 
     display: flex;
@@ -229,7 +260,9 @@ nav ul {
     gap: 30px;
 }
 
+
 nav ul a {
+
     color: var(--muted);
 
     text-decoration: none;
@@ -239,7 +272,9 @@ nav ul a {
     transition: .25s;
 }
 
+
 nav ul a:hover {
+
     color: var(--green);
 }
 
@@ -249,31 +284,39 @@ nav ul a:hover {
 ========================================================= */
 
 .hero {
+
     min-height: 100vh;
 
     display: grid;
 
-    grid-template-columns: 1.05fr .95fr;
+    grid-template-columns:
+        1.1fr .9fr;
 
     align-items: center;
 
     gap: 70px;
 
-    padding: 120px 8% 80px;
+    padding:
+        120px 8% 80px;
 }
 
+
 .status {
+
     display: inline-flex;
 
     align-items: center;
 
     gap: 9px;
 
-    padding: 7px 11px;
+    padding:
+        8px 12px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
-    background: rgba(69,245,141,.035);
+    background:
+        rgba(66,245,138,.035);
 
     color: var(--green);
 
@@ -286,18 +329,24 @@ nav ul a:hover {
     margin-bottom: 25px;
 }
 
+
 .status-dot {
+
     width: 6px;
     height: 6px;
 
     border-radius: 50%;
 
-    background: var(--green);
+    background:
+        var(--green);
 
-    box-shadow: 0 0 12px var(--green);
+    box-shadow:
+        0 0 12px var(--green);
 
-    animation: blink 2s infinite;
+    animation:
+        blink 2s infinite;
 }
+
 
 @keyframes blink {
 
@@ -308,26 +357,32 @@ nav ul a:hover {
     50% {
         opacity: .3;
     }
-
 }
 
-.hero h1 {
-    font-size: clamp(48px, 7vw, 100px);
 
-    line-height: .92;
+.hero h1 {
+
+    font-size:
+        clamp(55px, 8vw, 105px);
+
+    line-height: .88;
 
     letter-spacing: -5px;
 
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 }
 
+
 .hero h1 span {
+
     display: block;
 
     color: var(--green);
 }
 
+
 .hero-description {
+
     max-width: 650px;
 
     color: var(--muted);
@@ -337,13 +392,21 @@ nav ul a:hover {
     margin-bottom: 32px;
 }
 
+
 .hero-description strong {
+
     color: var(--text);
 
     font-weight: 500;
 }
 
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
 .buttons {
+
     display: flex;
 
     gap: 10px;
@@ -351,15 +414,19 @@ nav ul a:hover {
     flex-wrap: wrap;
 }
 
+
 .btn {
+
     display: inline-flex;
 
     align-items: center;
     justify-content: center;
 
-    padding: 12px 17px;
+    padding:
+        12px 17px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     color: var(--text);
 
@@ -369,126 +436,171 @@ nav ul a:hover {
 
     letter-spacing: .5px;
 
-    background: rgba(11,18,16,.75);
+    background:
+        rgba(8,19,15,.75);
 
     transition: .25s;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
 
-    border-color: var(--green);
+.btn:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        var(--green);
 
     box-shadow:
-        0 10px 30px rgba(69,245,141,.08);
+        0 10px 30px
+        rgba(66,245,138,.08);
 }
 
+
 .btn-primary {
-    background: var(--green);
 
-    color: #031108;
+    background:
+        var(--green);
 
-    border-color: var(--green);
+    color:
+        #041009;
+
+    border-color:
+        var(--green);
 
     font-weight: 700;
 }
 
 
 /* =========================================================
-   HERO PCB VISUAL
+   HERO PCB
 ========================================================= */
 
 .hero-board {
+
     position: relative;
 
-    width: min(470px, 100%);
+    width:
+        min(460px, 100%);
 
-    aspect-ratio: 1.35;
+    aspect-ratio:
+        1.25;
 
     margin: auto;
 
-    overflow: hidden;
-
-    border: 1px solid rgba(69,245,141,.45);
+    border:
+        1px solid
+        rgba(66,245,138,.45);
 
     background:
+
         linear-gradient(
             90deg,
             transparent 48%,
-            rgba(69,245,141,.12) 49%,
+            rgba(66,245,138,.10) 49%,
             transparent 51%
         ),
+
         linear-gradient(
             0deg,
             transparent 48%,
-            rgba(69,245,141,.12) 49%,
+            rgba(66,245,138,.10) 49%,
             transparent 51%
         ),
-        #092018;
+
+        #072117;
 
     box-shadow:
-        0 0 90px rgba(69,245,141,.07),
-        inset 0 0 60px rgba(69,245,141,.04);
 
-    transform: rotate(-3deg);
+        0 0 80px
+        rgba(66,245,138,.06),
 
-    transition: .5s;
+        inset 0 0 60px
+        rgba(66,245,138,.04);
+
+    transform:
+        rotate(-3deg);
+
+    transition:
+        .5s;
 }
+
 
 .hero-board:hover {
-    transform: rotate(0deg) scale(1.025);
+
+    transform:
+        rotate(0deg)
+        scale(1.025);
 
     box-shadow:
-        0 0 110px rgba(69,245,141,.13),
-        inset 0 0 70px rgba(69,245,141,.06);
+
+        0 0 100px
+        rgba(66,245,138,.12),
+
+        inset 0 0 60px
+        rgba(66,245,138,.06);
 }
 
+
 .hero-board::before {
-    content: "PCB / HARDWARE";
+
+    content:
+        "PCB / HARDWARE";
 
     position: absolute;
 
     left: 25px;
     top: 22px;
 
-    color: rgba(69,245,141,.55);
+    color:
+        rgba(66,245,138,.55);
 
     font-size: 11px;
 
     letter-spacing: 2px;
 }
 
+
 .hero-board::after {
-    content: "DEV GOHEL";
+
+    content:
+        "DEV GOHEL";
 
     position: absolute;
 
-    right: 20px;
+    right: 22px;
     bottom: 18px;
 
-    color: rgba(69,245,141,.35);
+    color:
+        rgba(66,245,138,.4);
 
     font-size: 9px;
 
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
 }
+
 
 .board-chip {
+
     position: absolute;
 
-    width: 105px;
+    width: 100px;
     height: 75px;
 
-    left: 35%;
-    top: 35%;
+    left: 34%;
+    top: 36%;
 
-    background: #101713;
+    background:
+        #111a16;
 
-    border: 1px solid rgba(69,245,141,.55);
+    border:
+        1px solid
+        rgba(66,245,138,.55);
 
     box-shadow:
-        0 0 25px rgba(0,0,0,.45);
+        0 0 20px rgba(0,0,0,.4);
 }
+
 
 .board-chip::before,
 .board-chip::after {
@@ -497,72 +609,93 @@ nav ul a:hover {
 
     position: absolute;
 
-    left: -12px;
-    right: -12px;
+    left: -11px;
+    right: -11px;
 
     height: 4px;
 
     background:
+
         repeating-linear-gradient(
             90deg,
-            rgba(69,245,141,.5) 0 6px,
+            rgba(66,245,138,.5) 0 6px,
             transparent 6px 12px
         );
 }
+
 
 .board-chip::before {
     top: 10px;
 }
 
+
 .board-chip::after {
     bottom: 10px;
 }
 
+
 .board-line {
+
     position: absolute;
 
     height: 1px;
 
-    background: rgba(69,245,141,.55);
+    background:
+        rgba(66,245,138,.55);
 }
 
+
 .line-1 {
-    width: 160px;
+
+    width: 150px;
 
     left: 7%;
     top: 28%;
 
-    transform: rotate(10deg);
+    transform:
+        rotate(10deg);
 }
 
+
 .line-2 {
-    width: 135px;
+
+    width: 130px;
 
     right: 5%;
     top: 65%;
 
-    transform: rotate(-15deg);
+    transform:
+        rotate(-15deg);
 }
 
+
 .line-3 {
-    width: 110px;
+
+    width: 100px;
 
     left: 10%;
     bottom: 22%;
 
-    transform: rotate(-7deg);
+    transform:
+        rotate(-7deg);
 }
+
 
 .board-component {
+
     position: absolute;
 
-    width: 27px;
-    height: 13px;
+    width: 25px;
+    height: 12px;
 
-    background: #17231e;
+    background:
+        #17221e;
 
-    border: 1px solid rgba(69,245,141,.4);
+    border:
+        1px solid
+        rgba(66,245,138,.4);
 }
+
 
 .bc-1 {
     left: 17%;
@@ -584,7 +717,9 @@ nav ul a:hover {
     bottom: 17%;
 }
 
+
 .board-via {
+
     position: absolute;
 
     width: 8px;
@@ -592,11 +727,14 @@ nav ul a:hover {
 
     border-radius: 50%;
 
-    border: 1px solid var(--green);
+    border:
+        1px solid var(--green);
 
     box-shadow:
-        0 0 8px rgba(69,245,141,.35);
+        0 0 8px
+        rgba(66,245,138,.35);
 }
+
 
 .bv-1 {
     left: 8%;
@@ -624,11 +762,16 @@ nav ul a:hover {
 ========================================================= */
 
 section {
-    padding: 110px 8%;
+
+    padding:
+        110px 8%;
 }
 
+
 .section-label {
-    color: var(--green);
+
+    color:
+        var(--green);
 
     font-size: 10px;
 
@@ -639,14 +782,20 @@ section {
     margin-bottom: 12px;
 }
 
+
 .section-title {
-    font-size: clamp(34px, 5vw, 58px);
 
-    letter-spacing: -3px;
+    font-size:
+        clamp(34px, 5vw, 58px);
 
-    line-height: 1;
+    letter-spacing:
+        -3px;
 
-    margin-bottom: 55px;
+    line-height:
+        1;
+
+    margin-bottom:
+        55px;
 }
 
 
@@ -655,110 +804,307 @@ section {
 ========================================================= */
 
 .projects {
-    display: grid;
+
+    display:
+        grid;
 
     grid-template-columns:
         repeat(3, 1fr);
 
-    gap: 20px;
-}
-
-.project {
-    background: rgba(11,18,16,.8);
-
-    border: 1px solid var(--border);
-
-    overflow: hidden;
-
-    transition: .35s;
-}
-
-.project:hover {
-    transform: translateY(-8px);
-
-    border-color:
-        rgba(69,245,141,.45);
-
-    box-shadow:
-        0 25px 65px rgba(0,0,0,.4);
+    gap:
+        20px;
 }
 
 
 /* =========================================================
-   PROJECT IMAGE
+   PROJECT CARD
 ========================================================= */
 
-.project-image {
-    position: relative;
+.project {
 
-    height: 260px;
+    background:
+        rgba(8,19,15,.80);
 
-    display: flex;
+    border:
+        1px solid var(--border);
 
-    align-items: center;
+    overflow:
+        hidden;
 
-    justify-content: center;
+    transition:
+        .35s;
+}
 
-    overflow: hidden;
+
+.project:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(66,245,138,.45);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.4);
+}
+
+
+/* =========================================================
+   IMAGE CAROUSEL
+========================================================= */
+
+.project-gallery {
+
+    position:
+        relative;
+
+    height:
+        280px;
+
+    overflow:
+        hidden;
+
+    background:
+        #07120e;
+}
+
+
+.slides {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        flex;
+
+    transition:
+        transform .5s
+        cubic-bezier(.4,0,.2,1);
+}
+
+
+.slide {
+
+    min-width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        18px;
 
     background:
         radial-gradient(
             circle,
-            rgba(69,245,141,.10),
-            transparent 60%
-        );
-
-    cursor: pointer;
-}
-
-.project-image img {
-    width: 90%;
-    height: 90%;
-
-    object-fit: contain;
-
-    transition: .5s;
-
-    filter:
-        drop-shadow(
-            0 15px 25px rgba(0,0,0,.45)
+            rgba(66,245,138,.08),
+            transparent 65%
         );
 }
 
-.project:hover .project-image img {
-    transform: scale(1.06);
+
+.slide img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        contain;
+
+    transition:
+        .4s;
+
+    cursor:
+        zoom-in;
 }
 
 
-/* IMAGE OVERLAY */
+.project:hover .slide img {
 
-.image-overlay {
-    position: absolute;
+    transform:
+        scale(1.025);
+}
 
-    inset: 0;
 
-    display: flex;
+/* =========================================================
+   CAROUSEL ARROWS
+========================================================= */
 
-    align-items: center;
+.carousel-btn {
 
-    justify-content: center;
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    transform:
+        translateY(-50%);
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        1px solid
+        rgba(66,245,138,.3);
 
     background:
-        rgba(3,10,7,.55);
+        rgba(3,10,7,.75);
 
-    color: var(--green);
+    color:
+        var(--green);
 
-    font-size: 11px;
+    cursor:
+        pointer;
 
-    letter-spacing: 1.5px;
+    font-size:
+        20px;
 
-    opacity: 0;
+    opacity:
+        0;
 
-    transition: .3s;
+    transition:
+        .25s;
+
+    z-index:
+        5;
 }
 
-.project:hover .image-overlay {
-    opacity: 1;
+
+.project:hover .carousel-btn {
+
+    opacity:
+        1;
+}
+
+
+.carousel-btn:hover {
+
+    background:
+        var(--green);
+
+    color:
+        #041009;
+
+    border-color:
+        var(--green);
+}
+
+
+.prev {
+
+    left:
+        12px;
+}
+
+
+.next {
+
+    right:
+        12px;
+}
+
+
+/* =========================================================
+   CAROUSEL DOTS
+========================================================= */
+
+.carousel-dots {
+
+    position:
+        absolute;
+
+    bottom:
+        12px;
+
+    left:
+        50%;
+
+    transform:
+        translateX(-50%);
+
+    display:
+        flex;
+
+    gap:
+        6px;
+
+    padding:
+        5px 8px;
+
+    background:
+        rgba(3,10,7,.75);
+
+    border:
+        1px solid
+        rgba(66,245,138,.15);
+}
+
+
+.dot {
+
+    width:
+        5px;
+
+    height:
+        5px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,255,255,.25);
+
+    cursor:
+        pointer;
+
+    transition:
+        .25s;
+}
+
+
+.dot.active {
+
+    width:
+        18px;
+
+    border-radius:
+        5px;
+
+    background:
+        var(--green);
+
+    box-shadow:
+        0 0 8px
+        rgba(66,245,138,.4);
 }
 
 
@@ -767,76 +1113,224 @@ section {
 ========================================================= */
 
 .project-content {
-    padding: 25px;
+
+    padding:
+        25px;
 }
+
 
 .project-number {
-    color: var(--green);
 
-    font-size: 9px;
+    color:
+        var(--green);
 
-    letter-spacing: 2px;
+    font-size:
+        9px;
 
-    margin-bottom: 12px;
+    letter-spacing:
+        2px;
+
+    margin-bottom:
+        12px;
 }
+
 
 .project h3 {
-    font-size: 20px;
 
-    line-height: 1.25;
+    font-size:
+        21px;
 
-    margin-bottom: 10px;
+    line-height:
+        1.2;
+
+    margin-bottom:
+        10px;
 }
+
 
 .project-description {
-    color: var(--muted);
 
-    font-size: 13px;
+    color:
+        var(--muted);
 
-    margin-bottom: 18px;
+    font-size:
+        13px;
+
+    margin-bottom:
+        18px;
 }
+
 
 .tags {
-    display: flex;
 
-    flex-wrap: wrap;
+    display:
+        flex;
 
-    gap: 6px;
+    flex-wrap:
+        wrap;
+
+    gap:
+        6px;
 }
+
 
 .tag {
-    border: 1px solid var(--border);
 
-    color: #a8bdb3;
+    border:
+        1px solid
+        var(--border);
 
-    padding: 4px 7px;
+    color:
+        #a9c3b7;
 
-    font-size: 9px;
+    padding:
+        4px 7px;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        .5px;
 }
+
+
+.project-footer {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+
+    margin-top:
+        20px;
+}
+
 
 .project-link {
-    display: inline-block;
 
-    margin-top: 18px;
+    color:
+        var(--green);
 
-    color: var(--green);
+    text-decoration:
+        none;
 
-    text-decoration: none;
-
-    font-size: 11px;
+    font-size:
+        11px;
 }
 
+
 .project-link:hover {
-    text-decoration: underline;
+
+    text-decoration:
+        underline;
+}
+
+
+.image-count {
+
+    color:
+        #647a70;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        1px;
 }
 
 
 /* =========================================================
-   PROJECT DETAILS
+   IMAGE MODAL
 ========================================================= */
 
-.project-gallery {
-    display: none;
+.image-modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    background:
+        rgba(0,0,0,.92);
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        30px;
+
+    z-index:
+        5000;
+
+    cursor:
+        zoom-out;
+}
+
+
+.image-modal.active {
+
+    display:
+        flex;
+}
+
+
+.image-modal img {
+
+    max-width:
+        92vw;
+
+    max-height:
+        90vh;
+
+    object-fit:
+        contain;
+
+    border:
+        1px solid
+        rgba(66,245,138,.35);
+
+    box-shadow:
+        0 0 80px
+        rgba(66,245,138,.08);
+}
+
+
+.modal-close {
+
+    position:
+        fixed;
+
+    top:
+        25px;
+
+    right:
+        30px;
+
+    color:
+        var(--green);
+
+    font-size:
+        30px;
+
+    cursor:
+        pointer;
+
+    z-index:
+        5001;
 }
 
 
@@ -845,51 +1339,77 @@ section {
 ========================================================= */
 
 .process {
-    display: grid;
+
+    display:
+        grid;
 
     grid-template-columns:
         repeat(5, 1fr);
 
-    border-top: 1px solid var(--border);
+    border-top:
+        1px solid var(--border);
 
-    border-left: 1px solid var(--border);
+    border-left:
+        1px solid var(--border);
 }
+
 
 .process-item {
-    min-height: 190px;
 
-    padding: 25px;
+    min-height:
+        190px;
 
-    border-right: 1px solid var(--border);
+    padding:
+        25px;
 
-    border-bottom: 1px solid var(--border);
+    border-right:
+        1px solid var(--border);
 
-    transition: .25s;
+    border-bottom:
+        1px solid var(--border);
+
+    transition:
+        .25s;
 }
+
 
 .process-item:hover {
+
     background:
-        rgba(69,245,141,.035);
+        rgba(66,245,138,.035);
 }
+
 
 .process-number {
-    color: var(--green);
 
-    font-size: 10px;
+    color:
+        var(--green);
 
-    margin-bottom: 35px;
+    font-size:
+        10px;
+
+    margin-bottom:
+        35px;
 }
+
 
 .process-item h3 {
-    font-size: 16px;
 
-    margin-bottom: 10px;
+    font-size:
+        16px;
+
+    margin-bottom:
+        10px;
 }
 
-.process-item p {
-    color: var(--muted);
 
-    font-size: 12px;
+.process-item p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
 }
 
 
@@ -898,45 +1418,64 @@ section {
 ========================================================= */
 
 .skills {
-    display: grid;
+
+    display:
+        grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
-    border-top: 1px solid var(--border);
+    border-top:
+        1px solid var(--border);
 
-    border-left: 1px solid var(--border);
+    border-left:
+        1px solid var(--border);
 }
+
 
 .skill {
-    min-height: 175px;
 
-    padding: 25px;
+    min-height:
+        175px;
 
-    border-right: 1px solid var(--border);
+    padding:
+        25px;
 
-    border-bottom: 1px solid var(--border);
+    border-right:
+        1px solid var(--border);
 
-    transition: .25s;
+    border-bottom:
+        1px solid var(--border);
+
+    transition:
+        .25s;
 }
+
 
 .skill:hover {
+
     background:
-        rgba(69,245,141,.035);
+        rgba(66,245,138,.035);
 }
+
 
 .skill h3 {
-    font-size: 16px;
 
-    margin-bottom: 13px;
+    font-size:
+        16px;
+
+    margin-bottom:
+        13px;
 }
 
+
 .skill p {
-    color: var(--muted);
 
-    font-size: 12px;
+    color:
+        var(--muted);
 
-    line-height: 1.9;
+    font-size:
+        12px;
 }
 
 
@@ -945,53 +1484,81 @@ section {
 ========================================================= */
 
 .about-grid {
-    display: grid;
+
+    display:
+        grid;
 
     grid-template-columns:
         1.2fr .8fr;
 
-    gap: 90px;
+    gap:
+        90px;
 }
+
 
 .about-text {
-    max-width: 650px;
+
+    max-width:
+        650px;
 }
+
 
 .about-text p {
-    color: var(--muted);
 
-    margin-bottom: 20px;
+    color:
+        var(--muted);
 
-    font-size: 15px;
+    margin-bottom:
+        20px;
+
+    font-size:
+        15px;
 }
+
 
 .stats {
-    display: flex;
 
-    flex-direction: column;
+    display:
+        flex;
 
-    gap: 15px;
+    flex-direction:
+        column;
+
+    gap:
+        15px;
 }
+
 
 .stat {
-    padding: 20px;
 
-    border-left: 2px solid var(--green);
+    padding:
+        20px;
+
+    border-left:
+        2px solid var(--green);
 
     background:
-        rgba(69,245,141,.025);
+        rgba(66,245,138,.025);
 }
+
 
 .stat strong {
-    display: block;
 
-    font-size: 20px;
+    display:
+        block;
+
+    font-size:
+        22px;
 }
 
-.stat span {
-    color: var(--muted);
 
-    font-size: 11px;
+.stat span {
+
+    color:
+        var(--muted);
+
+    font-size:
+        11px;
 }
 
 
@@ -1000,37 +1567,57 @@ section {
 ========================================================= */
 
 .contact {
-    text-align: center;
 
-    padding-top: 160px;
+    text-align:
+        center;
 
-    padding-bottom: 160px;
+    padding-top:
+        160px;
+
+    padding-bottom:
+        160px;
 }
+
 
 .contact h2 {
-    font-size: clamp(45px, 7vw, 85px);
 
-    letter-spacing: -4px;
+    font-size:
+        clamp(45px, 7vw, 85px);
 
-    line-height: .95;
+    letter-spacing:
+        -4px;
 
-    margin-bottom: 25px;
+    line-height:
+        .95;
+
+    margin-bottom:
+        25px;
 }
+
 
 .contact p {
-    color: var(--muted);
 
-    margin-bottom: 30px;
+    color:
+        var(--muted);
+
+    margin-bottom:
+        30px;
 }
 
+
 .contact-buttons {
-    display: flex;
 
-    justify-content: center;
+    display:
+        flex;
 
-    gap: 10px;
+    justify-content:
+        center;
 
-    flex-wrap: wrap;
+    gap:
+        10px;
+
+    flex-wrap:
+        wrap;
 }
 
 
@@ -1039,112 +1626,27 @@ section {
 ========================================================= */
 
 footer {
-    border-top: 1px solid var(--border);
 
-    padding: 25px 8%;
+    border-top:
+        1px solid var(--border);
 
-    display: flex;
+    padding:
+        25px 8%;
 
-    justify-content: space-between;
+    display:
+        flex;
 
-    color: #60766c;
+    justify-content:
+        space-between;
 
-    font-size: 10px;
+    color:
+        #60786e;
 
-    letter-spacing: .5px;
-}
+    font-size:
+        10px;
 
-
-/* =========================================================
-   IMAGE MODAL
-========================================================= */
-
-.modal {
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(0,0,0,.88);
-
-    backdrop-filter: blur(12px);
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 30px;
-
-    z-index: 2000;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.modal-content {
-    position: relative;
-
-    max-width: 1100px;
-
-    width: 100%;
-
-    max-height: 90vh;
-
-    background: #090f0d;
-
-    border: 1px solid var(--border);
-
-    padding: 20px;
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.6);
-}
-
-.modal-image {
-    width: 100%;
-
-    max-height: 70vh;
-
-    object-fit: contain;
-
-    display: block;
-}
-
-.modal-title {
-    margin-top: 15px;
-
-    color: var(--green);
-
-    font-size: 12px;
-
-    letter-spacing: 1.5px;
-}
-
-.close-modal {
-    position: absolute;
-
-    top: -15px;
-
-    right: -15px;
-
-    width: 35px;
-
-    height: 35px;
-
-    border-radius: 50%;
-
-    border: 1px solid var(--border);
-
-    background: #0c1512;
-
-    color: var(--green);
-
-    cursor: pointer;
-
-    font-size: 18px;
+    letter-spacing:
+        .5px;
 }
 
 
@@ -1152,92 +1654,142 @@ footer {
    MOBILE
 ========================================================= */
 
-@media(max-width: 1000px) {
+@media(max-width:1000px) {
 
     .hero {
-        grid-template-columns: 1fr;
 
+        grid-template-columns:
+            1fr;
     }
+
 
     .hero-board {
-        width: min(500px, 90%);
+
+        width:
+            min(500px,90%);
     }
+
 
     .projects {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
+
 
     .process {
+
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
+
 
     .skills {
+
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 
-    .about-grid {
-        grid-template-columns: 1fr;
 
-        gap: 45px;
+    .about-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            45px;
     }
 }
 
 
-@media(max-width: 650px) {
+@media(max-width:650px) {
 
     nav {
-        padding: 0 5%;
+
+        padding:
+            0 5%;
     }
+
 
     nav ul {
-        display: none;
+
+        display:
+            none;
     }
+
 
     section {
-        padding: 80px 6%;
+
+        padding:
+            80px 6%;
     }
 
+
     .hero {
+
         padding:
             110px 6% 70px;
     }
 
+
     .hero h1 {
-        letter-spacing: -3px;
+
+        letter-spacing:
+            -3px;
     }
 
+
     .hero-description {
-        font-size: 15px;
+
+        font-size:
+            15px;
     }
+
 
     .process,
     .skills {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
+
+
+    .project-gallery {
+
+        height:
+            240px;
+    }
+
+
+    .carousel-btn {
+
+        opacity:
+            1;
+    }
+
 
     footer {
-        flex-direction: column;
 
-        gap: 8px;
+        flex-direction:
+            column;
+
+        gap:
+            8px;
     }
 
-    .modal {
-        padding: 15px;
-    }
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =====================================================
-     PCB BACKGROUND
-====================================================== -->
+<!-- ======================================================
+     PCB DECORATION
+======================================================= -->
 
 <div class="trace trace-1"></div>
 <div class="trace trace-2"></div>
@@ -1249,9 +1801,9 @@ footer {
 <div class="via via-4"></div>
 
 
-<!-- =====================================================
+<!-- ======================================================
      NAVIGATION
-====================================================== -->
+======================================================= -->
 
 <nav>
 
@@ -1262,33 +1814,23 @@ footer {
     <ul>
 
         <li>
-            <a href="#projects">
-                Projects
-            </a>
+            <a href="#projects">Projects</a>
         </li>
 
         <li>
-            <a href="#process">
-                Process
-            </a>
+            <a href="#process">Process</a>
         </li>
 
         <li>
-            <a href="#skills">
-                Skills
-            </a>
+            <a href="#skills">Skills</a>
         </li>
 
         <li>
-            <a href="#about">
-                About
-            </a>
+            <a href="#about">About</a>
         </li>
 
         <li>
-            <a href="#contact">
-                Contact
-            </a>
+            <a href="#contact">Contact</a>
         </li>
 
     </ul>
@@ -1296,9 +1838,9 @@ footer {
 </nav>
 
 
-<!-- =====================================================
+<!-- ======================================================
      HERO
-====================================================== -->
+======================================================= -->
 
 <header class="hero">
 
@@ -1318,7 +1860,10 @@ footer {
             CIRCUITS
 
             <span>
-                LAID OUT<br>
+                LAID OUT
+            </span>
+
+            <span>
                 WITH PURPOSE.
             </span>
 
@@ -1380,25 +1925,17 @@ footer {
         <div class="board-chip"></div>
 
         <div class="board-line line-1"></div>
-
         <div class="board-line line-2"></div>
-
         <div class="board-line line-3"></div>
 
         <div class="board-component bc-1"></div>
-
         <div class="board-component bc-2"></div>
-
         <div class="board-component bc-3"></div>
-
         <div class="board-component bc-4"></div>
 
         <div class="board-via bv-1"></div>
-
         <div class="board-via bv-2"></div>
-
         <div class="board-via bv-3"></div>
-
         <div class="board-via bv-4"></div>
 
     </div>
@@ -1406,9 +1943,9 @@ footer {
 </header>
 
 
-<!-- =====================================================
+<!-- ======================================================
      PROJECTS
-====================================================== -->
+======================================================= -->
 
 <section id="projects">
 
@@ -1416,8 +1953,10 @@ footer {
         01 / SELECTED WORK
     </div>
 
+
     <h2 class="section-title">
-        PCB Projects
+        Designed from<br>
+        every layer.
     </h2>
 
 
@@ -1430,19 +1969,112 @@ footer {
 
         <article class="project">
 
+
             <div
-                class="project-image"
-                onclick="openModal(
-                    'images/ESP32 3D MODEL.png',
-                    'ESP32-S3 USB-C Development Board'
-                )">
+                class="project-gallery"
+                data-carousel>
 
-                <img
-                    src="images/ESP32 3D MODEL.png"
-                    alt="ESP32-S3 USB-C Development Board">
 
-                <div class="image-overlay">
-                    CLICK TO VIEW
+                <div class="slides">
+
+
+                    <div class="slide">
+
+                        <img
+                            src="images/ESP32.png"
+                            alt="ESP32-S3 USB-C PCB"
+                            onclick="openModal(this.src)">
+
+                    </div>
+
+
+                    <div class="slide">
+
+                        <img
+                            src="images/ESP32 3D MODEL.png"
+                            alt="ESP32-S3 3D model"
+                            onclick="openModal(this.src)">
+
+                    </div>
+
+
+                    <div class="slide">
+
+                        <img
+                            src="images/ESP32 SCHEMATIC.png"
+                            alt="ESP32-S3 schematic"
+                            onclick="openModal(this.src)">
+
+                    </div>
+
+
+                    <div class="slide">
+
+                        <img
+                            src="images/2D.png"
+                            alt="ESP32-S3 2D PCB layout"
+                            onclick="openModal(this.src)">
+
+                    </div>
+
+
+                    <div class="slide">
+
+                        <img
+                            src="images/3D Model.png"
+                            alt="ESP32-S3 PCB 3D model"
+                            onclick="openModal(this.src)">
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="carousel-btn prev"
+                    onclick="moveSlide(this,-1)">
+
+                    ‹
+
+                </button>
+
+
+                <button
+                    class="carousel-btn next"
+                    onclick="moveSlide(this,1)">
+
+                    ›
+
+                </button>
+
+
+                <div class="carousel-dots">
+
+                    <span
+                        class="dot active"
+                        onclick="goToSlide(this,0)">
+                    </span>
+
+                    <span
+                        class="dot"
+                        onclick="goToSlide(this,1)">
+                    </span>
+
+                    <span
+                        class="dot"
+                        onclick="goToSlide(this,2)">
+                    </span>
+
+                    <span
+                        class="dot"
+                        onclick="goToSlide(this,3)">
+                    </span>
+
+                    <span
+                        class="dot"
+                        onclick="goToSlide(this,4)">
+                    </span>
+
                 </div>
 
             </div>
@@ -1451,20 +2083,21 @@ footer {
             <div class="project-content">
 
                 <div class="project-number">
-                    PROJECT 01
+                    PROJECT 01 / 03
                 </div>
+
 
                 <h3>
                     ESP32-S3 USB-C Development Board
                 </h3>
 
+
                 <p class="project-description">
 
-                    4-layer ESP32-S3 development board
-                    designed in Altium Designer with
-                    USB-C connectivity, power integrity,
-                    grounding and manufacturable
-                    multilayer layout.
+                    4-layer ESP32-S3 development board designed
+                    in Altium Designer with USB-C connectivity,
+                    multilayer routing, power integrity,
+                    grounding and manufacturable layout.
 
                 </p>
 
@@ -1487,42 +2120,134 @@ footer {
                         ALTIUM
                     </span>
 
+                    <span class="tag">
+                        POWER
+                    </span>
+
                 </div>
 
 
-                <a
-                    href="https://github.com/devmgohel17/ESP32-with-USB-C"
-                    target="_blank"
-                    class="project-link">
+                <div class="project-footer">
 
-                    VIEW PROJECT ON GITHUB →
+                    <a
+                        href="https://github.com/devmgohel17/ESP32-with-USB-C"
+                        target="_blank"
+                        class="project-link">
 
-                </a>
+                        VIEW ON GITHUB →
+
+                    </a>
+
+
+                    <span class="image-count">
+                        5 VIEWS
+                    </span>
+
+                </div>
 
             </div>
 
         </article>
 
 
+
         <!-- =================================================
-             PROJECT 02 — USB CHARGER
+             PROJECT 02 — USB-C CHARGER
         ================================================== -->
 
         <article class="project">
 
+
             <div
-                class="project-image"
-                onclick="openModal(
-                    'images/3D Model USB.png',
-                    'USB-C Portable Battery Charger'
-                )">
+                class="project-gallery"
+                data-carousel>
 
-                <img
-                    src="images/3D Model USB.png"
-                    alt="USB-C Portable Battery Charger">
 
-                <div class="image-overlay">
-                    CLICK TO VIEW
+                <div class="slides">
+
+
+                    <div class="slide">
+
+                        <img
+                            src="images/2D USB.png"
+                            alt="USB-C charger 2D PCB"
+                            onclick="openModal(this.src)">
+
+                    </div>
+
+
+                    <div class="slide">
+
+                        <img
+                            src="images/3D Model USB.png"
+                            alt="USB-C charger 3D PCB"
+                            onclick="openModal(this.src)">
+
+                    </div>
+
+
+                    <div class="slide">
+
+                        <img
+                            src="images/Charger Controller.png"
+                            alt="USB-C charger controller schematic"
+                            onclick="openModal(this.src)">
+
+                    </div>
+
+
+                    <div class="slide">
+
+                        <img
+                            src="images/Step-Up DC-DC Converter.png"
+                            alt="Step-up DC-DC converter"
+                            onclick="openModal(this.src)">
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="carousel-btn prev"
+                    onclick="moveSlide(this,-1)">
+
+                    ‹
+
+                </button>
+
+
+                <button
+                    class="carousel-btn next"
+                    onclick="moveSlide(this,1)">
+
+                    ›
+
+                </button>
+
+
+                <div class="carousel-dots">
+
+                    <span
+                        class="dot active"
+                        onclick="goToSlide(this,0)">
+                    </span>
+
+                    <span
+                        class="dot"
+                        onclick="goToSlide(this,1)">
+                    </span>
+
+                    <span
+                        class="dot"
+                        onclick="goToSlide(this,2)">
+                    </span>
+
+                    <span
+                        class="dot"
+                        onclick="goToSlide(this,3)">
+                    </span>
+
                 </div>
 
             </div>
@@ -1531,19 +2256,21 @@ footer {
             <div class="project-content">
 
                 <div class="project-number">
-                    PROJECT 02
+                    PROJECT 02 / 03
                 </div>
+
 
                 <h3>
                     USB-C Portable Battery Charger
                 </h3>
 
+
                 <p class="project-description">
 
-                    2-layer portable battery charger
-                    integrating lithium-ion charging,
-                    power management and step-up
-                    DC-DC conversion.
+                    2-layer portable battery charger integrating
+                    USB-C input, lithium-ion charging,
+                    power management and step-up DC-DC
+                    conversion.
 
                 </p>
 
@@ -1563,24 +2290,38 @@ footer {
                     </span>
 
                     <span class="tag">
+                        DC-DC
+                    </span>
+
+                    <span class="tag">
                         ALTIUM
                     </span>
 
                 </div>
 
 
-                <a
-                    href="https://github.com/devmgohel17/USB-C-Charger"
-                    target="_blank"
-                    class="project-link">
+                <div class="project-footer">
 
-                    VIEW PROJECT ON GITHUB →
+                    <a
+                        href="https://github.com/devmgohel17/USB-C-Charger"
+                        target="_blank"
+                        class="project-link">
 
-                </a>
+                        VIEW ON GITHUB →
+
+                    </a>
+
+
+                    <span class="image-count">
+                        4 VIEWS
+                    </span>
+
+                </div>
 
             </div>
 
         </article>
+
 
 
         <!-- =================================================
@@ -1589,19 +2330,67 @@ footer {
 
         <article class="project">
 
+
             <div
-                class="project-image"
-                onclick="openModal(
-                    'images/3D LDO.jpg',
-                    'LDO Voltage Regulator PCB'
-                )">
+                class="project-gallery"
+                data-carousel>
 
-                <img
-                    src="images/3D LDO.jpg"
-                    alt="LDO Voltage Regulator PCB">
 
-                <div class="image-overlay">
-                    CLICK TO VIEW
+                <div class="slides">
+
+
+                    <div class="slide">
+
+                        <img
+                            src="images/LDO.jpg"
+                            alt="LDO voltage regulator PCB"
+                            onclick="openModal(this.src)">
+
+                    </div>
+
+
+                    <div class="slide">
+
+                        <img
+                            src="images/3D LDO.jpg"
+                            alt="LDO voltage regulator 3D model"
+                            onclick="openModal(this.src)">
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="carousel-btn prev"
+                    onclick="moveSlide(this,-1)">
+
+                    ‹
+
+                </button>
+
+
+                <button
+                    class="carousel-btn next"
+                    onclick="moveSlide(this,1)">
+
+                    ›
+
+                </button>
+
+
+                <div class="carousel-dots">
+
+                    <span
+                        class="dot active"
+                        onclick="goToSlide(this,0)">
+                    </span>
+
+                    <span
+                        class="dot"
+                        onclick="goToSlide(this,1)">
+                    </span>
+
                 </div>
 
             </div>
@@ -1610,19 +2399,21 @@ footer {
             <div class="project-content">
 
                 <div class="project-number">
-                    PROJECT 03
+                    PROJECT 03 / 03
                 </div>
+
 
                 <h3>
                     LDO Voltage Regulator PCB
                 </h3>
 
+
                 <p class="project-description">
 
-                    Compact LDO voltage regulator PCB
-                    designed with optimized power routing,
-                    grounding and component placement
-                    for stable regulation.
+                    Compact LDO voltage regulator PCB designed
+                    with optimized power routing, grounding,
+                    component placement and manufacturable
+                    layout practices.
 
                 </p>
 
@@ -1648,338 +2439,37 @@ footer {
                 </div>
 
 
-                <a
-                    href="https://github.com/devmgohel17/SimpleLDOConverter"
-                    target="_blank"
-                    class="project-link">
+                <div class="project-footer">
 
-                    VIEW PROJECT ON GITHUB →
+                    <a
+                        href="https://github.com/devmgohel17/SimpleLDOConverter"
+                        target="_blank"
+                        class="project-link">
 
-                </a>
+                        VIEW ON GITHUB →
+
+                    </a>
+
+
+                    <span class="image-count">
+                        2 VIEWS
+                    </span>
+
+                </div>
 
             </div>
 
         </article>
+
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     PROJECT DETAILS / DESIGN EVIDENCE
-====================================================== -->
-
-<section>
-
-    <div class="section-label">
-        01.5 / DESIGN EVIDENCE
-    </div>
-
-    <h2 class="section-title">
-        See the hardware<br>
-        from every layer.
-    </h2>
-
-
-    <div class="projects">
-
-
-        <!-- ESP32 SCHEMATIC -->
-
-        <article class="project">
-
-            <div
-                class="project-image"
-                onclick="openModal(
-                    'images/ESP32 SCHEMATIC.png',
-                    'ESP32-S3 Schematic'
-                )">
-
-                <img
-                    src="images/ESP32 SCHEMATIC.png"
-                    alt="ESP32-S3 Schematic">
-
-                <div class="image-overlay">
-                    VIEW SCHEMATIC
-                </div>
-
-            </div>
-
-            <div class="project-content">
-
-                <div class="project-number">
-                    ESP32 / SCHEMATIC
-                </div>
-
-                <h3>
-                    ESP32-S3 Schematic
-                </h3>
-
-                <p class="project-description">
-                    Circuit-level design and connectivity
-                    supporting the ESP32-S3 USB-C hardware.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <!-- ESP32 -->
-
-        <article class="project">
-
-            <div
-                class="project-image"
-                onclick="openModal(
-                    'images/ESP32.png',
-                    'ESP32-S3 PCB Layout'
-                )">
-
-                <img
-                    src="images/ESP32.png"
-                    alt="ESP32 PCB Layout">
-
-                <div class="image-overlay">
-                    VIEW PCB
-                </div>
-
-            </div>
-
-            <div class="project-content">
-
-                <div class="project-number">
-                    ESP32 / LAYOUT
-                </div>
-
-                <h3>
-                    PCB Layout
-                </h3>
-
-                <p class="project-description">
-                    Multilayer PCB layout showing
-                    component placement and routing.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <!-- USB 2D -->
-
-        <article class="project">
-
-            <div
-                class="project-image"
-                onclick="openModal(
-                    'images/2D USB.png',
-                    'USB-C Charger 2D PCB Layout'
-                )">
-
-                <img
-                    src="images/2D USB.png"
-                    alt="USB-C Charger 2D PCB Layout">
-
-                <div class="image-overlay">
-                    VIEW LAYOUT
-                </div>
-
-            </div>
-
-            <div class="project-content">
-
-                <div class="project-number">
-                    CHARGER / 2D
-                </div>
-
-                <h3>
-                    2D PCB Layout
-                </h3>
-
-                <p class="project-description">
-                    PCB layout showing routing,
-                    component placement and board
-                    organization.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <!-- CHARGER CONTROLLER -->
-
-        <article class="project">
-
-            <div
-                class="project-image"
-                onclick="openModal(
-                    'images/Charger Controller.png',
-                    'Charger Controller'
-                )">
-
-                <img
-                    src="images/Charger Controller.png"
-                    alt="Charger Controller">
-
-                <div class="image-overlay">
-                    VIEW DESIGN
-                </div>
-
-            </div>
-
-            <div class="project-content">
-
-                <div class="project-number">
-                    CHARGER / CONTROL
-                </div>
-
-                <h3>
-                    Charger Controller
-                </h3>
-
-                <p class="project-description">
-                    Controller section of the portable
-                    battery charger design.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <!-- STEP UP -->
-
-        <article class="project">
-
-            <div
-                class="project-image"
-                onclick="openModal(
-                    'images/Step-Up DC-DC Converter.png',
-                    'Step-Up DC-DC Converter'
-                )">
-
-                <img
-                    src="images/Step-Up DC-DC Converter.png"
-                    alt="Step-Up DC-DC Converter">
-
-                <div class="image-overlay">
-                    VIEW DESIGN
-                </div>
-
-            </div>
-
-            <div class="project-content">
-
-                <div class="project-number">
-                    CHARGER / POWER
-                </div>
-
-                <h3>
-                    Step-Up DC-DC Converter
-                </h3>
-
-                <p class="project-description">
-                    Power conversion section designed
-                    for portable battery operation.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <!-- LDO -->
-
-        <article class="project">
-
-            <div
-                class="project-image"
-                onclick="openModal(
-                    'images/LDO.jpg',
-                    'LDO Voltage Regulator'
-                )">
-
-                <img
-                    src="images/LDO.jpg"
-                    alt="LDO Voltage Regulator">
-
-                <div class="image-overlay">
-                    VIEW PCB
-                </div>
-
-            </div>
-
-            <div class="project-content">
-
-                <div class="project-number">
-                    LDO / LAYOUT
-                </div>
-
-                <h3>
-                    LDO PCB Layout
-                </h3>
-
-                <p class="project-description">
-                    Compact regulator layout with
-                    optimized grounding and power routing.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <!-- 3D LDO -->
-
-        <article class="project">
-
-            <div
-                class="project-image"
-                onclick="openModal(
-                    'images/3D LDO.jpg',
-                    'LDO 3D Model'
-                )">
-
-                <img
-                    src="images/3D LDO.jpg"
-                    alt="LDO 3D Model">
-
-                <div class="image-overlay">
-                    VIEW 3D
-                </div>
-
-            </div>
-
-            <div class="project-content">
-
-                <div class="project-number">
-                    LDO / 3D
-                </div>
-
-                <h3>
-                    LDO 3D Model
-                </h3>
-
-                <p class="project-description">
-                    3D visualization of the completed
-                    regulator PCB.
-                </p>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
+<!-- ======================================================
      PROCESS
-====================================================== -->
+======================================================= -->
 
 <section id="process">
 
@@ -1987,9 +2477,12 @@ footer {
         02 / WORKFLOW
     </div>
 
+
     <h2 class="section-title">
+
         From schematic<br>
         to fabrication.
+
     </h2>
 
 
@@ -2007,8 +2500,8 @@ footer {
             </h3>
 
             <p>
-                Circuit development, component
-                selection and electrical connectivity.
+                Circuit development, component selection
+                and electrical connectivity.
             </p>
 
         </div>
@@ -2025,8 +2518,8 @@ footer {
             </h3>
 
             <p>
-                Component placement based on
-                function, power flow and routing.
+                Component placement based on function,
+                power flow and routing requirements.
             </p>
 
         </div>
@@ -2043,8 +2536,8 @@ footer {
             </h3>
 
             <p>
-                Signal, power and ground routing
-                with layout optimization.
+                Signal, power and ground routing with
+                layout optimization.
             </p>
 
         </div>
@@ -2090,15 +2583,16 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- ======================================================
      SKILLS
-====================================================== -->
+======================================================= -->
 
 <section id="skills">
 
     <div class="section-label">
         03 / ENGINEERING TOOLKIT
     </div>
+
 
     <h2 class="section-title">
         Tools & Expertise
@@ -2176,9 +2670,9 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- ======================================================
      ABOUT
-====================================================== -->
+======================================================= -->
 
 <section id="about">
 
@@ -2186,9 +2680,12 @@ footer {
         04 / ABOUT
     </div>
 
+
     <h2 class="section-title">
+
         Engineering hardware<br>
         with purpose.
+
     </h2>
 
 
@@ -2203,6 +2700,7 @@ footer {
                 hardware development.
             </p>
 
+
             <p>
                 My work spans schematic development,
                 PCB layout, component placement,
@@ -2210,6 +2708,7 @@ footer {
                 design validation and manufacturing
                 preparation.
             </p>
+
 
             <p>
                 I enjoy taking a circuit from an initial
@@ -2268,9 +2767,9 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- ======================================================
      CONTACT
-====================================================== -->
+======================================================= -->
 
 <section
     id="contact"
@@ -2283,24 +2782,26 @@ footer {
 
 
     <h2>
+
         Let's build<br>
         something real.
+
     </h2>
 
 
     <p>
-        Open to PCB design, electronics
-        and hardware engineering opportunities.
+        Open to PCB design, electronics and
+        hardware engineering opportunities.
     </p>
 
 
     <div class="contact-buttons">
 
 
-        <!-- CHANGE EMAIL HERE -->
+        <!-- CHANGE EMAIL -->
 
         <a
-            href="mailto:devmgohel@gmail.com"
+            href="mailto:YOUR_EMAIL@example.com"
             class="btn btn-primary">
 
             EMAIL ME
@@ -2332,9 +2833,9 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- ======================================================
      FOOTER
-====================================================== -->
+======================================================= -->
 
 <footer>
 
@@ -2349,117 +2850,249 @@ footer {
 </footer>
 
 
-<!-- =====================================================
+<!-- ======================================================
      IMAGE MODAL
-====================================================== -->
+======================================================= -->
 
 <div
-    class="modal"
+    class="image-modal"
     id="imageModal"
-    onclick="closeModal(event)">
-
-    <div
-        class="modal-content"
-        onclick="event.stopPropagation()">
-
-        <button
-            class="close-modal"
-            onclick="closeModal()">
-
-            ×
-
-        </button>
+    onclick="closeModal()">
 
 
-        <img
-            id="modalImage"
-            class="modal-image"
-            src=""
-            alt="">
+    <span
+        class="modal-close"
+        onclick="closeModal()">
+
+        ×
+
+    </span>
 
 
-        <div
-            id="modalTitle"
-            class="modal-title">
-
-        </div>
-
-    </div>
+    <img
+        id="modalImage"
+        src=""
+        alt="PCB project image">
 
 </div>
 
 
-<!-- =====================================================
+<!-- ======================================================
      JAVASCRIPT
-====================================================== -->
+======================================================= -->
 
 <script>
+
+
+/* =========================================================
+   CAROUSEL
+========================================================= */
+
+function moveSlide(button, direction) {
+
+    const gallery =
+        button.closest(".project-gallery");
+
+    const slides =
+        gallery.querySelector(".slides");
+
+    const dots =
+        gallery.querySelectorAll(".dot");
+
+    const total =
+        dots.length;
+
+
+    let current =
+        parseInt(
+            gallery.dataset.current || "0"
+        );
+
+
+    current += direction;
+
+
+    if (current < 0) {
+
+        current =
+            total - 1;
+    }
+
+
+    if (current >= total) {
+
+        current =
+            0;
+    }
+
+
+    slides.style.transform =
+        `translateX(-${current * 100}%)`;
+
+
+    dots.forEach(
+        dot =>
+            dot.classList.remove("active")
+    );
+
+
+    dots[current]
+        .classList.add("active");
+
+
+    gallery.dataset.current =
+        current;
+}
+
+
+/* =========================================================
+   GO TO SPECIFIC IMAGE
+========================================================= */
+
+function goToSlide(dot, index) {
+
+    const gallery =
+        dot.closest(".project-gallery");
+
+    const slides =
+        gallery.querySelector(".slides");
+
+    const dots =
+        gallery.querySelectorAll(".dot");
+
+
+    slides.style.transform =
+        `translateX(-${index * 100}%)`;
+
+
+    dots.forEach(
+        d =>
+            d.classList.remove("active")
+    );
+
+
+    dots[index]
+        .classList.add("active");
+
+
+    gallery.dataset.current =
+        index;
+}
+
+
+/* =========================================================
+   AUTO SLIDE
+========================================================= */
+
+document
+    .querySelectorAll(".project-gallery")
+    .forEach(gallery => {
+
+
+        gallery.dataset.current = "0";
+
+
+        let timer =
+            setInterval(() => {
+
+
+                const next =
+                    gallery.querySelector(".next");
+
+
+                if (next) {
+
+                    moveSlide(next, 1);
+
+                }
+
+            }, 5000);
+
+
+        gallery.addEventListener(
+            "mouseenter",
+            () => {
+
+                clearInterval(timer);
+
+            }
+        );
+
+
+        gallery.addEventListener(
+            "mouseleave",
+            () => {
+
+                timer =
+                    setInterval(() => {
+
+                        const next =
+                            gallery.querySelector(".next");
+
+                        if (next) {
+
+                            moveSlide(next, 1);
+
+                        }
+
+                    }, 5000);
+
+            }
+        );
+
+    });
+
 
 /* =========================================================
    IMAGE MODAL
 ========================================================= */
 
-function openModal(image, title) {
+function openModal(src) {
 
     const modal =
         document.getElementById("imageModal");
 
-    const modalImage =
+    const image =
         document.getElementById("modalImage");
 
-    const modalTitle =
-        document.getElementById("modalTitle");
 
-
-    modalImage.src = image;
-
-    modalImage.alt = title;
-
-    modalTitle.textContent = title;
-
+    image.src =
+        src;
 
     modal.classList.add("active");
 
-
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 }
 
 
-function closeModal(event) {
+function closeModal() {
 
-    if (
-        event &&
-        event.target !==
-        document.getElementById("imageModal")
-    ) {
-        return;
-    }
+    const modal =
+        document.getElementById("imageModal");
 
 
-    document
-        .getElementById("imageModal")
-        .classList.remove("active");
+    modal.classList.remove("active");
 
-
-    document.body.style.overflow = "";
+    document.body.style.overflow =
+        "";
 }
 
 
 /* =========================================================
-   ESC KEY CLOSE
+   ESCAPE KEY
 ========================================================= */
 
 document.addEventListener(
     "keydown",
-    function(event) {
+    event => {
 
-        if (event.key === "Escape") {
+        if (
+            event.key === "Escape"
+        ) {
 
-            document
-                .getElementById("imageModal")
-                .classList.remove("active");
+            closeModal();
 
-            document.body.style.overflow = "";
         }
 
     }
@@ -2469,4 +3102,5 @@ document.addEventListener(
 
 
 </body>
+
 </html>
